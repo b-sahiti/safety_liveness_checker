@@ -1,0 +1,2 @@
+rule active prio match action
+R0 true 100 src=I delete(R0),delete(R1),delete(R3),send(IDPS)
