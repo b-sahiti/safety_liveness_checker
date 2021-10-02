@@ -13,5 +13,9 @@ if __name__ == "__main__":
     print(json.dumps(com, indent=4))
     print(com)
     com2 = combTables(com, monitor, "IDPS", "MONITOR")
+    comres={}
+
+    for k in com2.keys():
+        comres[k] = com2[k]._asdict()
     print("Combine fw idps monitor\n")
-    print(json.dumps(com2, indent=4))
+    print(json.dumps(comres, indent=4))
