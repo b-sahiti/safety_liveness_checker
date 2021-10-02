@@ -1,0 +1,20 @@
+{
+  "R0_L0": {
+    "active": "true,false",
+    "priority": 10000,
+    "match": "src=I",
+    "action": "delete(fw-R0),delete(fw-R1),delete(fw-R3),drop()"
+  },
+  "R0_L1": {
+    "active": "true,false",
+    "priority": 5000,
+    "match": "src=I,dst=D",
+    "action": "delete(fw-R0),delete(fw-R1),delete(fw-R3),drop(),add(IDPS-L0)"
+  },
+  "R0_L2": {
+    "active": "true,false",
+    "priority": 5000,
+    "match": "src=I,dst=F",
+    "action": "delete(fw-R0),delete(fw-R1),delete(fw-R3),send(),add(IDPS-L1)"
+  }
+}
