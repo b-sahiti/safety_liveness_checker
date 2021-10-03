@@ -8,6 +8,7 @@ import json
 # output: list of table object
 def read_compound_table(f):
     json_object = json.load(f)
+    output = ""
     res = list()
     for key in json_object:
         name = key
@@ -17,7 +18,7 @@ def read_compound_table(f):
         other_compound_rules.remove(key)
         res.append(compound_rule_object.CompoundRule(key, init_states, actions, other_compound_rules, ["fw", "IDPS"]))
     for compoundRule in res:
-        print(compoundRule.to_model_string())
+        output += compoundRule.to_model_string()
 
     main_mod = "MODULE main" + "\n" + "VAR" + "\n"
 
@@ -34,14 +35,19 @@ def read_compound_table(f):
                main_mod += ","
 
         main_mod += ");\n"
-    print(main_mod)
+    output += main_mod
+    return output
 
 def main():
     parser = argparse.ArgumentParser(description='converts compound table to a NuSMV file')
     parser.add_argument('-f', '--filename', help='specifies the file location', required=True)
+    parser.add_argument('-o', '--output', help='specifies the file location to output', required=True)
     args = parser.parse_args()
-    with open(args.filename) as f:
-        smv = read_compound_table(f)
+    with open(args.filename) as f_input:
+        with open(args.output, "w") as f_output:
+            smv = read_compound_table(f_input)
+            f_output.write(smv)
+            f_output.close()
 
 
 if __name__ == '__main__':
