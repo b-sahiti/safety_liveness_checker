@@ -19,7 +19,7 @@ def read_compound_table(f):
     for compoundRule in res:
         print(compoundRule.to_model_string())
 
-    main_mod = "MODULE main" + "\n"
+    main_mod = "MODULE main" + "\n" + "VAR" + "\n"
 
 
     for key in json_object.keys():
@@ -33,7 +33,7 @@ def read_compound_table(f):
             if i != len(other_rules) - 1:
                main_mod += ","
 
-        main_mod += ")\n"
+        main_mod += ");\n"
     print(main_mod)
 
 def main():
