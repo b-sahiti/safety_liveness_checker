@@ -1,0 +1,178 @@
+MODULE R0_R0(R0_R4,R1,R3)
+VAR
+	active1:boolean;
+	active2:boolean;
+ASSIGN
+	init(active1) := TRUE;
+	init(active2) := FALSE;
+	next(self.active1) := case
+		self.active1 & self.active2 : FALSE;
+		TRUE : self.active1;
+		esac;
+	next(R0_R4.active1) := case
+		self.active1 & self.active2 : FALSE;
+		TRUE : R0_R4.active1;
+		esac;
+	next(R1.active1) := case
+		self.active1 & self.active2 : FALSE;
+		TRUE : R1.active1;
+		esac;
+	next(R3.active1) := case
+		self.active1 & self.active2 : FALSE;
+		TRUE : R3.active1;
+		esac;
+MODULE R0_R4(R0_R0,R1,R3)
+VAR
+	active1:boolean;
+	active2:boolean;
+ASSIGN
+	init(active1) := TRUE;
+	init(active2) := TRUE;
+	next(self.active1) := case
+		self.active1 & self.active2 : FALSE;
+		TRUE : self.active1;
+		esac;
+	next(R0_R0.active1) := case
+		self.active1 & self.active2 : FALSE;
+		TRUE : R0_R0.active1;
+		esac;
+	next(R1.active1) := case
+		self.active1 & self.active2 : FALSE;
+		TRUE : R1.active1;
+		esac;
+	next(R3.active1) := case
+		self.active1 & self.active2 : FALSE;
+		TRUE : R3.active1;
+		esac;
+MODULE R1(R0_R0,R0_R4,R4_R3,R4_R4)
+VAR
+	active1:boolean;
+ASSIGN
+	init(active1) := TRUE;
+	next(self.active1) := case
+		self.active1 : FALSE;
+		TRUE : self.active1;
+		esac;
+	next(R0_R0.active1) := case
+		self.active1 : FALSE;
+		TRUE : R0_R0.active1;
+		esac;
+	next(R0_R4.active1) := case
+		self.active1 : FALSE;
+		TRUE : R0_R4.active1;
+		esac;
+	next(R4_R3.active1) := case
+		self.active1 : FALSE;
+		TRUE : R4_R3.active1;
+		esac;
+	next(R4_R4.active1) := case
+		self.active1 : FALSE;
+		TRUE : R4_R4.active1;
+		esac;
+MODULE R2_R0()
+VAR
+	active1:boolean;
+	active2:boolean;
+ASSIGN
+	init(active1) := TRUE;
+	init(active2) := FALSE;
+MODULE R2_R4()
+VAR
+	active1:boolean;
+	active2:boolean;
+ASSIGN
+	init(active1) := TRUE;
+	init(active2) := TRUE;
+MODULE R3()
+VAR
+	active1:boolean;
+ASSIGN
+	init(active1) := TRUE;
+MODULE R4_R3(R5_R2)
+VAR
+	active1:boolean;
+	active2:boolean;
+ASSIGN
+	init(active1) := TRUE;
+	init(active2) := TRUE;
+	next(R5_R2.active2) := case
+		self.active1 & self.active2 : TRUE;
+		TRUE : R5_R2.active2;
+		esac;
+MODULE R4_R4()
+VAR
+	active1:boolean;
+	active2:boolean;
+ASSIGN
+	init(active1) := TRUE;
+	init(active2) := TRUE;
+MODULE R5_R0()
+VAR
+	active1:boolean;
+	active2:boolean;
+ASSIGN
+	init(active1) := TRUE;
+	init(active2) := FALSE;
+MODULE R5_R1(R0_R0,R2_R0,R5_R0)
+VAR
+	active1:boolean;
+	active2:boolean;
+ASSIGN
+	init(active1) := TRUE;
+	init(active2) := FALSE;
+	next(R0_R0.active2) := case
+		self.active1 & self.active2 : TRUE;
+		TRUE : R0_R0.active2;
+		esac;
+	next(R2_R0.active2) := case
+		self.active1 & self.active2 : TRUE;
+		TRUE : R2_R0.active2;
+		esac;
+	next(R5_R0.active2) := case
+		self.active1 & self.active2 : TRUE;
+		TRUE : R5_R0.active2;
+		esac;
+MODULE R5_R2(R5_R1)
+VAR
+	active1:boolean;
+	active2:boolean;
+ASSIGN
+	init(active1) := TRUE;
+	init(active2) := FALSE;
+	next(R5_R1.active2) := case
+		self.active1 & self.active2 : TRUE;
+		TRUE : R5_R1.active2;
+		esac;
+MODULE R5_R3(R5_R2)
+VAR
+	active1:boolean;
+	active2:boolean;
+ASSIGN
+	init(active1) := TRUE;
+	init(active2) := TRUE;
+	next(R5_R2.active2) := case
+		self.active1 & self.active2 : TRUE;
+		TRUE : R5_R2.active2;
+		esac;
+MODULE R5_R4()
+VAR
+	active1:boolean;
+	active2:boolean;
+ASSIGN
+	init(active1) := TRUE;
+	init(active2) := TRUE;
+MODULE main
+VAR
+	R0_R0 : process R0_R0(R0_R4,R1,R2_R0,R2_R4,R3,R4_R3,R4_R4,R5_R0,R5_R1,R5_R2,R5_R3,R5_R4);
+	R0_R4 : process R0_R4(R0_R0,R1,R2_R0,R2_R4,R3,R4_R3,R4_R4,R5_R0,R5_R1,R5_R2,R5_R3,R5_R4);
+	R1 : process R1(R0_R0,R0_R4,R2_R0,R2_R4,R3,R4_R3,R4_R4,R5_R0,R5_R1,R5_R2,R5_R3,R5_R4);
+	R2_R0 : process R2_R0(R0_R0,R0_R4,R1,R2_R4,R3,R4_R3,R4_R4,R5_R0,R5_R1,R5_R2,R5_R3,R5_R4);
+	R2_R4 : process R2_R4(R0_R0,R0_R4,R1,R2_R0,R3,R4_R3,R4_R4,R5_R0,R5_R1,R5_R2,R5_R3,R5_R4);
+	R3 : process R3(R0_R0,R0_R4,R1,R2_R0,R2_R4,R4_R3,R4_R4,R5_R0,R5_R1,R5_R2,R5_R3,R5_R4);
+	R4_R3 : process R4_R3(R0_R0,R0_R4,R1,R2_R0,R2_R4,R3,R4_R4,R5_R0,R5_R1,R5_R2,R5_R3,R5_R4);
+	R4_R4 : process R4_R4(R0_R0,R0_R4,R1,R2_R0,R2_R4,R3,R4_R3,R5_R0,R5_R1,R5_R2,R5_R3,R5_R4);
+	R5_R0 : process R5_R0(R0_R0,R0_R4,R1,R2_R0,R2_R4,R3,R4_R3,R4_R4,R5_R1,R5_R2,R5_R3,R5_R4);
+	R5_R1 : process R5_R1(R0_R0,R0_R4,R1,R2_R0,R2_R4,R3,R4_R3,R4_R4,R5_R0,R5_R2,R5_R3,R5_R4);
+	R5_R2 : process R5_R2(R0_R0,R0_R4,R1,R2_R0,R2_R4,R3,R4_R3,R4_R4,R5_R0,R5_R1,R5_R3,R5_R4);
+	R5_R3 : process R5_R3(R0_R0,R0_R4,R1,R2_R0,R2_R4,R3,R4_R3,R4_R4,R5_R0,R5_R1,R5_R2,R5_R4);
+	R5_R4 : process R5_R4(R0_R0,R0_R4,R1,R2_R0,R2_R4,R3,R4_R3,R4_R4,R5_R0,R5_R1,R5_R2,R5_R3);

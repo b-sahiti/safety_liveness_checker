@@ -1,6 +1,6 @@
 import argparse
 import compound_rule_object
-
+import copy
 import json
 
 
@@ -15,15 +15,13 @@ def read_compound_table(f,T_name):
         init_states = json_object[key]["active"]
         actions = json_object[key]["action"]
         other_compound_rules = list(json_object.keys())
+        impacted_rules_including_self=get_manipulated_rules(T_name,actions,other_compound_rules)
         other_compound_rules.remove(key)
-        other_impacted_rules=get_manipulated_rules(T_name,actions,other_compound_rules)
-        print(name,actions,other_impacted_rules,sep='\t')
-        continue
-        res.append(compound_rule_object.CompoundRule(key, init_states, actions, other_compound_rules, ["fw", "IDPS"]))
-    exit(0)
+        res.append(compound_rule_object.CompoundRule(key, init_states, actions,impacted_rules_including_self ))
     for compoundRule in res:
         output += compoundRule.to_model_string()
-
+    
+    #TODO: SAHITI MODULES ARE CORRECT, NEED TO CORRECT MAIN
     main_mod = "MODULE main" + "\n" + "VAR" + "\n"
 
 
@@ -45,11 +43,13 @@ def read_compound_table(f,T_name):
 def get_manipulated_rules(T_name,actions,other_rules):
     T_name=T_name.split("_")
     actions=actions.split(',')
+    original_actions=actions.copy()
     actions=[s[s.find("(")+1:s.find(")")] for s in actions ]
     actions.remove('')
     impacted_rules=[]
     if len(actions)==0:
         return impacted_rules
+    i=0
     for action in actions:
         #TODO: Need to generalize this beyong 2 position
         for i in range(len(T_name)):
@@ -65,7 +65,8 @@ def get_manipulated_rules(T_name,actions,other_rules):
             split_rule=rule.split("_")
             if len(split_rule)>position:
                 if action in split_rule[position]:
-                    impacted_rules.append((rule,position))
+                    impacted_rules.append((original_actions[i],rule,position))
+        i+=1
     return impacted_rules
 
 
