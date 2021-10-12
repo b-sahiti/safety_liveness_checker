@@ -21,7 +21,10 @@ def read_compound_table(f,T_name):
     for compoundRule in res:
         output += compoundRule.to_model_string()
     
-    #TODO: SAHITI MODULES ARE CORRECT, NEED TO CORRECT MAIN
+    processes={}
+    for r in res:
+        processes[r.name]=[rt[1] for rt in r.other_impacted_rules]
+
     main_mod = "MODULE main" + "\n" + "VAR" + "\n"
 
 
@@ -29,11 +32,9 @@ def read_compound_table(f,T_name):
         main_mod += "\t" + key + " : process "
         main_mod += key + "("
 
-        other_rules = list(json_object.keys())
-        other_rules.remove(key)
-        for i, rule in enumerate(other_rules):
+        for i, rule in enumerate(processes[key]):
             main_mod += rule
-            if i != len(other_rules) - 1:
+            if i != len(processes[key]) - 1:
                main_mod += ","
 
         main_mod += ");\n"
