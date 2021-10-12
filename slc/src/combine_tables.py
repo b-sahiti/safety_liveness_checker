@@ -1,3 +1,4 @@
+import json
 from slc.src.utility import Rule
 from slc.src.log_module import log
 from slc.src.utility import Rule
@@ -28,6 +29,13 @@ def combTables(T1,T2,T1_name,T2_name):
 
                 merged_table[m_name]=Rule._make([''.join(m_active),m_prio,new_match,new_action])
                 log.debug(merged_table[m_name])
+
+    comres={}
+
+    for k in merged_table.keys():
+        comres[k] = merged_table[k]._asdict() 
+
+    json.dump(comres,open(T1_name+"_"+T2_name,'w'))
     return merged_table
 
 def combAction(a1,T1_name,T2_name,curr_name):

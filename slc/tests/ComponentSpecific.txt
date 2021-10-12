@@ -1,0 +1,22 @@
+Firewalls:
+    1. I to E
+    2. E only if I earlier
+    3. Eventually Bad player is detected and blocked
+
+
+IDPS:
+    1. Bad player gets blacklisted
+
+Load Balancer:
+    1. All flows go to only the set (XOR)
+    2. All packets of a flow go to a particular server
+    3. 
+
+Rate Limiter:
+    1.Appropriate policies
+SLA:
+    1. All src,dest have paths, count etc
+    2. All Internal can reach authentication server
+    3. Isolation
+    4. Conditional Reachability: Eg: User gets authenticated and then reaches filesystem
+    

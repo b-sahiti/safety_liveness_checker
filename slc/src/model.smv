@@ -1,0 +1,70 @@
+MODULE R0_L0(R0_L1,R0_L2)
+VAR
+    active1:boolean;
+    active2:boolean;
+ASSIGN
+    init(active1) := TRUE;
+    init(active2) := FALSE;
+    next(self.active1) := case
+        self.active1 & self.active2 : FALSE;
+        TRUE : self.active1;
+        esac;
+    next(R0_L1.active1) := case
+        self.active1 & self.active2 : FALSE;
+        TRUE : R0_L1.active1;
+        esac;
+    next(R0_L2.active1) := case
+        self.active1 & self.active2 : FALSE;
+        TRUE : R0_L2.active1;
+        esac;
+MODULE R0_L1(R0_L0,R0_L2)
+VAR
+    active1:boolean;
+    active2:boolean;
+ASSIGN
+    init(active1) := TRUE;
+    init(active2) := FALSE;
+    next(self.active1) := case
+        self.active1 & self.active2 : FALSE;
+        TRUE : self.active1;
+        esac;
+    next(R0_L0.active1) := case
+        self.active1 & self.active2 : FALSE;
+        TRUE : R0_L0.active1;
+        esac;
+    next(R0_L2.active1) := case
+        self.active1 & self.active2 : FALSE;
+        TRUE : R0_L2.active1;
+        esac;
+    next(R0_L0.active2) := case
+        self.active1 & self.active2 : TRUE;
+        TRUE : R0_L0.active2;
+        esac;
+MODULE R0_L2(R0_L0,R0_L1)
+VAR
+    active1:boolean;
+    active2:boolean;
+ASSIGN
+    init(active1) := TRUE;
+    init(active2) := FALSE;
+    next(self.active1) := case
+        self.active1 & self.active2 : FALSE;
+        TRUE : self.active1;
+        esac;
+    next(R0_L0.active1) := case
+        self.active1 & self.active2 : FALSE;
+        TRUE : R0_L0.active1;
+        esac;
+    next(R0_L1.active1) := case
+        self.active1 & self.active2 : FALSE;
+        TRUE : R0_L1.active1;
+        esac;
+    next(R0_L1.active2) := case
+        self.active1 & self.active2 : TRUE;
+        TRUE : R0_L1.active2;
+        esac;
+MODULE main
+VAR
+    R0_L0 : process R0_L0(R0_L1,R0_L2);
+    R0_L1 : process R0_L1(R0_L0,R0_L2);
+    R0_L2 : process R0_L2(R0_L0,R0_L1);

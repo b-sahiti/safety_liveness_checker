@@ -1,0 +1,5 @@
+
+rule active prio match action
+0 true 100 src_mac=M,port=2222 add(1),add(2)
+1 false 100 src_mac=M,port=22 send()
+2 false 100 dst_mac=M,port=80 send()

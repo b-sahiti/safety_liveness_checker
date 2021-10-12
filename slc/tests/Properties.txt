@@ -1,0 +1,16 @@
+FW-IDPS-LB
+FW-
+
+1. Reachability 
+    1.1 Universality, Global : G (path)
+    1.2 After : F (path)
+    1.3 After, Bounded existence : F(path) < k steps
+    1.4 Conditinal Reachability: : Response
+
+   This property can be per NF or over a set of NF.
+   Eg:  
+2. Waypointing
+    2.1 Presence : Global (Eg: Throgh a node)
+    2.2 Absence : Global (Eg: Never throgh a node)
+3. Modification:
+    3.1 After: 

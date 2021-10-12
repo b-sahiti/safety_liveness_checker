@@ -1,0 +1,3 @@
+
+rule active prio match action
+0 true 100 src=I,dst=E,0≤c0<10 send()

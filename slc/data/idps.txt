@@ -1,6 +1,6 @@
 rule active prio match action
-L0 false 100 src=I drop()
-L1 false 50 src=I,dst=D drop(),add(L0)
-L2 false 50 src=I,dst=F send(),add(L1)
-L3 true 40 dst=I,port=2222 send(),add(L2)
-L4 true 10 * send()
+R0 false 100 src=I drop() 
+R1 false 50 src=I,dst=D drop(),add(R0)
+R2 false 50 src=I,dst=F send(),add(R1)
+R3 true 40 dst=I,port=2222 send(),add(R2)
+R4 true 10 * send()

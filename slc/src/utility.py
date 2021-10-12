@@ -28,5 +28,5 @@ def InputParser(input_file: str):
         log.debug(row[1:5])
         curr_rule=Rule._make(row[1:5])
         Table[row[0]]=curr_rule
-    print(json.dumps(Table, indent=4))
+    #print(json.dumps(Table, indent=4))
     return Table
