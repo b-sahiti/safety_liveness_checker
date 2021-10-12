@@ -35,7 +35,7 @@ def combTables(T1,T2,T1_name,T2_name):
     for k in merged_table.keys():
         comres[k] = merged_table[k]._asdict() 
 
-    json.dump(comres,open(T1_name+"_"+T2_name,'w'))
+    json.dump(comres,open(T1_name+"_"+T2_name,'w'),indent=4)
     return merged_table
 
 def combAction(a1,T1_name,T2_name,curr_name):

@@ -17,6 +17,7 @@ def read_compound_table(f):
         other_compound_rules = list(json_object.keys())
         other_compound_rules.remove(key)
         res.append(compound_rule_object.CompoundRule(key, init_states, actions, other_compound_rules, ["fw", "IDPS"]))
+        print(key, init_states, actions, other_compound_rules,sep='$$$$')
     for compoundRule in res:
         output += compoundRule.to_model_string()
 

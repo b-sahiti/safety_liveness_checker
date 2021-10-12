@@ -31,6 +31,7 @@ class CompoundRule:
         res += "VAR" + "\n"
         # condition on all self variables
         join_condition = ""
+        #for i in range(self.num_tables):
         for i in range(self.num_tables):
             res += "\t" + "active" + str(i + 1) + ":boolean;" + "\n"
             join_condition += "self.active" + str(i + 1)
