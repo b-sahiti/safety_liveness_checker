@@ -1,0 +1,27 @@
+{
+    "graph": [
+        {
+            "name": "Firewall",
+            "id": "fw1",
+            "rule_file": "./Firewall.txt",
+            "children_ids": [
+                "switch1",
+                "switch2"
+            ]
+        },
+        {
+            "name":"Switch 1",
+            "id": "switch1",
+            "rule_file": "./switch_1.txt",
+            "children_ids": [
+            ]
+        },
+        {
+            "name":"Switch 2",
+            "id": "switch2",
+            "rule_file": "./switch_2.txt",
+            "children_ids": [
+            ]
+        }
+    ]
+}

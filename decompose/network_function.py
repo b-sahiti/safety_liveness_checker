@@ -48,6 +48,6 @@ class NetworkFunction:
         self.smv = smv
 
     # TODO: verify the LTL property directly on the generated smv model
-    def generate_smv(self, property):
-        ltl = pysmvc.helper(rule_filename, property, name + ".smv")
-        # Then verify the LTL property generated on the generated smv file
+    def verify_property(self, property):
+        ltl = pysmvc.helper(self.rule_filename, property, self.name + ".smv")
+        # TODO: verify the LTL property generated on the generated smv file
