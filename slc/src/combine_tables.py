@@ -14,6 +14,9 @@ def combTables(T1,T2,T1_name,T2_name):
             log.debug(" Combining: \n T1[{}]: {} \n T2[{}]: {} ".format(k1,T1[k1],k2,T2[k2]))
             new_match = combMatch(T1[k1].match,T2[k2].match)
             new_action = combAction(T1[k1].action,T1_name,T2_name,T1_name)
+            """print(new_match, new_action)
+            for i in range(1000000):
+                a = 1"""
             if(new_action == None):
                 continue
             if(len(new_action) > 0):
@@ -72,6 +75,9 @@ def combMatch(ma1,ma2):
     m1 = ma1.split(",")
     m2 = ma2.split(",")
     wildcard = ['*']
+    """print(ma1,ma2)
+    for i in range(1000000):
+        a=1"""
     if (m1 == wildcard):
         if (m2 == wildcard):
             return '*'
@@ -93,19 +99,28 @@ def combMatch(ma1,ma2):
 def checkClash(d1,d2):
     for k1 in d1.keys():
         if k1 in d2:
-            if(d1[k1] != d2[k1]):
-                return True
+            if (k1 == "src" or k1 == "dst" or k1 == "port"):
+                if(d1[k1] != d2[k1]):
+                    return True
     return False
 
 def merge_actions(d1,d2):
     for k in d2.keys():
-        if k not in d1:
-            d1[k] = d2[k]
+        if (k == "src" or k == "dst" or k == "port"):
+            if k not in d1:
+                d1[k] = d2[k]
     ma = []
     for k, v in d1.items():
-        ma.append(k)
-        ma.append("=")
-        ma.append(v)
+        if (k == "src" or k == "dst" or k == "port"):
+            ma.append(k)
+            ma.append("=")
+            ma.append(v)
+            ma.append(",")
+    if "c" in d1:
+        ma.append(d1["c"])
+        ma.append(",")
+    if "c" in d2:
+        ma.append(d2["c"])
         ma.append(",")
     ma.pop()    
     return ''.join(ma)
@@ -116,8 +131,33 @@ def merge_actions(d1,d2):
 def m2d(m):
     d = {}
     for item in m:
-        if ("=" in item):
-            item_s = item.split("=")
-            d[item_s[0]] = item_s[1]
+        if (item.startswith("src") or item.startswith("dst") or item.startswith("port")):
+            if("=" in item):
+                item_s = item.split("=")
+                d[item_s[0]] = item_s[1]
+        else:
+            d["c"] = item
     return d
 
+"""
+def parseC(s):
+    item_s = s.split("c")
+    res = []
+    res.append(parseInt(item_s[0]))
+    res.append(parseInt(item_s[1]))
+    print(res)
+    for i in range(1000000):
+        a=1
+    return res
+
+def parseInt(s):
+    i = 0
+    for c in s:
+        if c.isdigit():
+            i *= 10
+            i += ord(c)-ord('0')
+            print(c,i)
+            for x in range(1000000):
+                a = 1
+    return i
+"""
