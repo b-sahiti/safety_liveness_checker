@@ -51,3 +51,8 @@ class NetworkFunction:
     def verify_property(self, property):
         ltl = pysmvc.helper(self.rule_filename, property, self.name + ".smv")
         # TODO: verify the LTL property generated on the generated smv file
+
+    # return false if device doesn't always drop packets with given condition
+    def local_drop(self, match_condition):
+        ltl = pysmvc.helper(self.rule_filename, match_condition + "drop()", self.name + ".smv")
+        return True

@@ -1,0 +1,32 @@
+// G(src = E; dst = I; drop())
+// packets from outside will always be dropped before it reach destination
+
+boolean global_drop(match_fields, topology):
+    for edge_device in topology:
+        if dfs(edge_device, []) then return false
+    return true
+
+boolean dfs(network_function, visited_set):
+    if network_function in visited_set:
+        return false
+    else
+        visited_set.add(network_function)
+        if local_drop(network_function):
+            for child in network_function.children:
+                if dfs(child, visited_set) return true
+    return false
+
+
+Alternatively (consumes more space to store paths):
+
+boolean global_drop(match_fields, topology):
+    paths = list()
+    for edge_device in topology:
+        paths.append(dfs(topology, edge_device, dst))
+    for path in paths:
+        for device in path:
+            if device.local_drop(match_fields):
+                break
+        return true
+    return false
+

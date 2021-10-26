@@ -1,5 +1,6 @@
 # module for graph operations
 import network_function as nf
+import json
 
 
 def load_graph(f):
@@ -7,12 +8,13 @@ def load_graph(f):
     res = dict()
     for nwfunc in json_object["graph"]:
         id = nwfunc["id"]
-        res[id] = nf.NetworkFunction(nwfunc["name"], nwfunc["id"], nwfunc["children_ids"], nwfunc["rule_file"], nwfunc)
+        res[id] = nf.NetworkFunction(nwfunc["name"], nwfunc["id"], nwfunc["children_ids"], nwfunc["rule_file"])
+    return res
 
 
 # return list of paths; each path is a list of nwfunc ids
 def get_paths(graph, src_id, dst_id):
-    return dfs(graph, src_id, dst_id, list(), dict())
+    return dfs(graph, src_id, dst_id, list(), list(), dict())
 
 
 def dfs(graph, src_id, dst_id, paths, curr_path, visited):
@@ -37,4 +39,9 @@ def verify_path_reachability(path, filter, graph):
         next_nwfunc = graph[path[idx + 1]]
         prop = filter + "send(" + next_nwfunc.id + ");"
         if not nwfunc.verify_property(prop):
-            return false
+            return False
+
+
+if __name__ == '__main__':
+    print("import succeeful")
+
