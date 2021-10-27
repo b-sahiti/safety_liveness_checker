@@ -28,7 +28,8 @@ def read_compound_table(f,f_name):
     
     processes={}
     for r in res:
-        processes[r.name]=[rt[1] for rt in r.other_impacted_rules]
+        processes[r.name]=[rt[1] for rt in r.set_impacted]
+        #processes[r.name]=[rt[1] for rt in r.other_impacted_rules]
 
     main_mod = "MODULE main" + "\n" + "VAR" + "\n"
 

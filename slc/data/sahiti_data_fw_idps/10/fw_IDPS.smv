@@ -29,7 +29,7 @@ ASSIGN
 		self.active1 & self.active2 : FALSE;
 		TRUE : R3.active1;
 		esac;
-MODULE R0_R1(R0_R0,R0_R4,R0_R9,R1,R3,R0_R0,R2_R0)
+MODULE R0_R1(R0_R0,R0_R4,R0_R9,R1,R3,R2_R0)
 VAR
 	active1:boolean;
 	active2:boolean;
@@ -291,7 +291,7 @@ ASSIGN
 		self.active1 & self.active2 : FALSE;
 		TRUE : R8.active1;
 		esac;
-MODULE R5_R6(R5_R4,R5_R5,R5_R9,R6,R8,R5_R5,R7_R5)
+MODULE R5_R6(R5_R4,R5_R5,R5_R9,R6,R8,R7_R5)
 VAR
 	active1:boolean;
 	active2:boolean;
@@ -463,7 +463,7 @@ ASSIGN
 MODULE main
 VAR
 	R0_R0 : process R0_R0(R0_R1,R0_R4,R0_R9,R1,R3);
-	R0_R1 : process R0_R1(R0_R0,R0_R4,R0_R9,R1,R3,R0_R0,R2_R0);
+	R0_R1 : process R0_R1(R0_R0,R0_R4,R0_R9,R1,R3,R2_R0);
 	R0_R4 : process R0_R4(R0_R0,R0_R1,R0_R9,R1,R3);
 	R0_R9 : process R0_R9(R0_R0,R0_R1,R0_R4,R1,R3);
 	R1 : process R1(R0_R0,R0_R1,R0_R4,R0_R9,R4_R3,R4_R4,R4_R9);
@@ -477,7 +477,7 @@ VAR
 	R4_R9 : process R4_R9();
 	R5_R4 : process R5_R4(R5_R5,R5_R6,R5_R9,R6,R8);
 	R5_R5 : process R5_R5(R5_R4,R5_R6,R5_R9,R6,R8);
-	R5_R6 : process R5_R6(R5_R4,R5_R5,R5_R9,R6,R8,R5_R5,R7_R5);
+	R5_R6 : process R5_R6(R5_R4,R5_R5,R5_R9,R6,R8,R7_R5);
 	R5_R9 : process R5_R9(R5_R4,R5_R5,R5_R6,R6,R8);
 	R6 : process R6(R5_R4,R5_R5,R5_R6,R5_R9,R9_R4,R9_R8,R9_R9);
 	R7_R4 : process R7_R4();

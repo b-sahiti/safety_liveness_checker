@@ -17,13 +17,21 @@ class CompoundRule:
         self.actions = str.split(actions, ",")
         self.impacted_rules_including_self=impacted_rules_including_self
         self.other_impacted_rules=[r for r in self.impacted_rules_including_self if r[1] is not self.name]
+        self.set_impacted=[]
+        impacted_visited=set()
+        for i, (action,rule,pos) in enumerate(self.other_impacted_rules):
+            if rule not in impacted_visited:
+                self.set_impacted.append((action,rule,pos))
+                impacted_visited.add(rule)
 
     def to_model_string(self):
         res = ""
         res += "MODULE " + self.name + "("
-        for i, (_,rule,_) in enumerate(self.other_impacted_rules):
+        #print(self.other_impacted_rules)
+        #print(set_impacted)
+        for i, (_,rule,_) in enumerate(self.set_impacted):
             res += rule
-            if i != len(self.other_impacted_rules) - 1:
+            if i != len(self.set_impacted) - 1:
                 res += ","
         res += ")\n"
 

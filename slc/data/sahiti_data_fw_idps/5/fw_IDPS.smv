@@ -25,7 +25,7 @@ ASSIGN
 		self.active1 & self.active2 : FALSE;
 		TRUE : R3.active1;
 		esac;
-MODULE R0_R1(R0_R0,R0_R4,R1,R3,R0_R0,R2_R0)
+MODULE R0_R1(R0_R0,R0_R4,R1,R3,R2_R0)
 VAR
 	active1:boolean;
 	active2:boolean;
@@ -167,7 +167,7 @@ ASSIGN
 MODULE main
 VAR
 	R0_R0 : process R0_R0(R0_R1,R0_R4,R1,R3);
-	R0_R1 : process R0_R1(R0_R0,R0_R4,R1,R3,R0_R0,R2_R0);
+	R0_R1 : process R0_R1(R0_R0,R0_R4,R1,R3,R2_R0);
 	R0_R4 : process R0_R4(R0_R0,R0_R1,R1,R3);
 	R1 : process R1(R0_R0,R0_R1,R0_R4,R4_R3,R4_R4);
 	R2_R0 : process R2_R0();
