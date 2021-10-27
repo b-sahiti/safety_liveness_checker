@@ -1,12 +1,15 @@
+import os
 import argparse
 import compound_rule_object
 import copy
 import json
-
+import time
 
 # input: file input stream handler
 # output: list of table object
-def read_compound_table(f,T_name):
+def read_compound_table(f,f_name):
+    f_name=f_name.split("/")
+    T_name=f_name[-1]
     json_object = json.load(f)
     output = ""
     res = list()
@@ -17,9 +20,11 @@ def read_compound_table(f,T_name):
         other_compound_rules = list(json_object.keys())
         impacted_rules_including_self=get_manipulated_rules(key,T_name,actions,other_compound_rules)
         other_compound_rules.remove(key)
+        #print(key,impacted_rules_including_self)
         res.append(compound_rule_object.CompoundRule(key, init_states, actions,impacted_rules_including_self ))
     for compoundRule in res:
         output += compoundRule.to_model_string()
+
     
     processes={}
     for r in res:
@@ -81,11 +86,18 @@ def main():
     parser.add_argument('-o', '--output', help='specifies the file location to output', required=True)
     args = parser.parse_args()
     T_name=args.filename
+
+    start1=time.time()
     with open(args.filename) as f_input:
         with open(args.output, "w") as f_output:
+            start2=time.time()
             smv = read_compound_table(f_input,T_name)
+            end=time.time()
+            print(f"Time for generating {args.output} without io = {(end-start2)*1000} milliseconds")
             f_output.write(smv)
             f_output.close()
+            end=time.time()
+            print(f"Time for generating {args.output} with io = {(end-start1)*1000} milliseconds")
 
 
 if __name__ == '__main__':

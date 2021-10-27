@@ -1,3 +1,4 @@
+import os
 import json
 from slc.src.utility import Rule
 from slc.src.log_module import log
@@ -14,9 +15,10 @@ def combTables(T1,T2,T1_name,T2_name):
             log.debug(" Combining: \n T1[{}]: {} \n T2[{}]: {} ".format(k1,T1[k1],k2,T2[k2]))
             new_match = combMatch(T1[k1].match,T2[k2].match)
             new_action = combAction(T1[k1].action,T1_name,T2_name,T1_name)
+            #print(k1, k2, new_match, new_action)
             """print(new_match, new_action)
             for i in range(1000000):
-                a = 1"""
+                a = 1""" 
             if(new_action == None):
                 continue
             if(len(new_action) > 0):
@@ -37,8 +39,10 @@ def combTables(T1,T2,T1_name,T2_name):
 
     for k in merged_table.keys():
         comres[k] = merged_table[k]._asdict() 
-
-    json.dump(comres,open(T1_name+"_"+T2_name,'w'),indent=4)
+    path="slc/data/sahiti_data_fw_idps/"+str(len(T1))+"/"
+    if not os.path.exists(path):
+        os.makedirs(path)
+    json.dump(comres,open(path+T1_name+"_"+T2_name,'w'),indent=4)
     return merged_table
 
 def combAction(a1,T1_name,T2_name,curr_name):
