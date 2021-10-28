@@ -3,6 +3,7 @@
         {
             "name": "Firewall",
             "id": "fw1",
+            "is_edge": true,
             "rule_file": "./Firewall.txt",
             "children_ids": [
                 "switch1",
@@ -12,13 +13,16 @@
         {
             "name":"Switch 1",
             "id": "switch1",
+            "is_edge": false,
             "rule_file": "./switch_1.txt",
             "children_ids": [
+                "switch2"
             ]
         },
         {
             "name":"Switch 2",
             "id": "switch2",
+            "is_edge": false,
             "rule_file": "./switch_2.txt",
             "children_ids": [
             ]

@@ -8,24 +8,30 @@ def load_graph(f):
     res = dict()
     for nwfunc in json_object["graph"]:
         id = nwfunc["id"]
-        res[id] = nf.NetworkFunction(nwfunc["name"], nwfunc["id"], nwfunc["children_ids"], nwfunc["rule_file"])
+        res[id] = nf.NetworkFunction(nwfunc["name"], nwfunc["id"], nwfunc["is_edge"], nwfunc["children_ids"], nwfunc["rule_file"])
     return res
 
 
 # return list of paths; each path is a list of nwfunc ids
 def get_paths(graph, src_id, dst_id):
-    return dfs(graph, src_id, dst_id, list(), list(), dict())
+    paths = list()
+    curr_path = [src_id]
+    dfs(graph, src_id, dst_id, paths, curr_path, dict())
+    return paths
 
 
 def dfs(graph, src_id, dst_id, paths, curr_path, visited):
     if src_id == dst_id:
-        paths.append(curr_path)
+        paths.append(curr_path.copy())
+        return
 
     curr_nwfunc = graph[src_id]
     for child_id in curr_nwfunc.children_ids:
-        if (not visited.has_key(child_id)) or (not visited[child_id]):
+        if child_id not in visited or not visited[child_id]:
             visited[child_id] = True
-            dfs(graph, child_id, dst_id, paths, curr_path.append(child_id), visited)
+            curr_path.append(child_id)
+            dfs(graph, child_id, dst_id, paths, curr_path, visited)
+            curr_path.remove(child_id)
             visited[child_id] = False
 
 
@@ -43,5 +49,5 @@ def verify_path_reachability(path, filter, graph):
 
 
 if __name__ == '__main__':
-    print("import succeeful")
+    print("import successful")
 

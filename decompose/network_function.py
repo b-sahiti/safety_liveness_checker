@@ -1,5 +1,5 @@
 from liveness import pysmvc
-
+import subprocess
 """
 Example: 
 {
@@ -40,9 +40,10 @@ class NetworkFunction:
     smv: address of smv file | string of smv file, etc.
     """
 
-    def __init__(self, name, id, children_ids, rule_file, smv=None):
+    def __init__(self, name, id, is_edge, children_ids, rule_file, smv=None):
         self.name = name
         self.id = id
+        self.is_edge = is_edge
         self.children_ids = children_ids
         self.rule_file = rule_file
         self.smv = smv
@@ -54,5 +55,7 @@ class NetworkFunction:
 
     # return false if device doesn't always drop packets with given condition
     def local_drop(self, match_condition):
-        ltl = pysmvc.helper(self.rule_filename, match_condition + "drop()", self.name + ".smv")
+        pysmvc.helper(self.rule_filename, match_condition + "drop()", self.name + ".smv")
+        s = subprocess.run(["../bin/NuSMV.exe", self.name + ".smv"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        # TODO: extract result from s
         return True

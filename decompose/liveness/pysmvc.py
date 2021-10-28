@@ -43,9 +43,7 @@ def getprop(prop, l, l1, actions, packets):
             return (getprop(prop, l[(1):], l1[(1):], actions, packets))
 
 
-def helper(g, propfile, smv_filename):
-    propf = open(propfile, "r")
-    prop = propf.read()
+def helper(g, prop, smv_filename):
     pop = prop.split(";")
     f = open(g, "r")
     b = open(smv_filename, "w")
@@ -224,15 +222,15 @@ def helper(g, propfile, smv_filename):
         if "c0" in r[i][3]:
             b.write("\t" + "r" + str(i - 1) + "1" + " : process " + r[i][0] + "1(c);" + "\n")
         k = k + 1
+    b.write("SPEC " + ltl)
     b.close()
     return ltl
 
 
 def main():
-    g = sys.argv[1]
-    propfile = sys.argv[2]
-    smv_filename = sys.argv[3]
-    helper(g, propfile, smv_filename)
+    rule_file = sys.argv[1]
+    smv_filename = sys.argv[2]
+    helper(rule_file, "src=I,dst=E;drop()", smv_filename)
 
 
 if __name__ == "__main__":

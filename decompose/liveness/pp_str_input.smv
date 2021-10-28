@@ -66,5 +66,3 @@ VAR
 	r3 : process R3();
 	r4 : process R4();
 	r5 : process R5();
-
-(r0.active=TRUE)

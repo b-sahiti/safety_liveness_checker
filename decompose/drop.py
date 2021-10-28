@@ -34,4 +34,6 @@ def global_drop(match_fields, topology):
 
 if __name__ == '__main__':
     f = open("topo_sample.json")
-    global_drop("src=I;dst=E;", topo.load_graph(f))
+    graph = topo.load_graph(f)
+    paths = topo.get_paths(graph, "fw1", "switch2")
+    print(paths)
