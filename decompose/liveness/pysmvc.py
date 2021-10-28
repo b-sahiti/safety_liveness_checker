@@ -43,7 +43,7 @@ def getprop(prop, l, l1, actions, packets):
             return (getprop(prop, l[(1):], l1[(1):], actions, packets))
 
 
-def helper(g, prop, smv_filename):
+def helper(rule_file, prop, smv_filename):
     pop = prop.split(";")
     f = open(g, "r")
     b = open(smv_filename, "w")

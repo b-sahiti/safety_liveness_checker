@@ -1,5 +1,7 @@
 from liveness import pysmvc
 import subprocess
+import re
+
 """
 Example: 
 {
@@ -55,7 +57,16 @@ class NetworkFunction:
 
     # return false if device doesn't always drop packets with given condition
     def local_drop(self, match_condition):
-        pysmvc.helper(self.rule_filename, match_condition + "drop()", self.name + ".smv")
-        s = subprocess.run(["../bin/NuSMV.exe", self.name + ".smv"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        # TODO: extract result from s
-        return True
+        self.smv = "./models" + self.name + ".smv"
+        pysmvc.helper(rule_file=self.rule_filename, prop=match_condition + "drop()", smv_filename=self.smv)
+        s = subprocess.run(["../NuSMV-2.6.0-win64/bin/NuSMV.exe", self.name + ".smv"], stdout=subprocess.PIPE,
+                           stderr=subprocess.PIPE)
+        res = re.search("(?<=\)\s\sis\s).*(?=\\r)", s.stdout.decode("utf-8")).group(0)
+        if res is None:
+            raise Exception("LTL result not found")
+        elif res == "false":
+            return False
+        elif res == "true":
+            return True
+        else:
+            raise Exception("unidentifiable LTL result")
