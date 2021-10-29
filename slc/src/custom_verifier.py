@@ -1,5 +1,6 @@
 import os, json
 from collections import namedtuple
+from time import time
 
 
 Rule=namedtuple('Rule','active, prio, match, action')
@@ -9,8 +10,9 @@ def InputParser(input_file: str):
     #Open and read file line by line.
     #Skip first line as it is column names
     infile = open(input_file, 'r')
-    print(input_file)
+    print("Reading from ", input_file)
     lines=infile.readlines()
+    print("Rules: ")
     for line in lines[1:]:
         line=line.strip()
         row=line.split(" ")
@@ -34,7 +36,35 @@ class CustomVerifier:
                     new_actions += action + ","
             if new_actions: # not empty
                 new_actions = new_actions[:-1]
-                self.table[k]._replace(action = new_actions) 
+                self.table[k]._replace(action = new_actions)
+                
+    # find mutable states
+    def find_mutable(self): 
+        mutable = [0] * self.num_rules
+        queue = []
+        for i in range(self.num_rules): 
+            if self.init_state[i]: 
+                queue.append(i)
+
+        # print("Initial queue is ", queue)
+        while(len(queue)): 
+            rule = "R" + str(queue.pop())
+            active = self.table[rule].active
+            for action in self.table[rule].action.split(","):
+                if ("add" in action):
+                        target = action[4:-1]
+                        if (self.table[target].active == "false"):
+                            target_idx = int(target.strip("R"))
+                            if not mutable[target_idx]: 
+                                queue.append(target_idx)
+                            mutable[target_idx] = 1
+                elif("delete" in action):
+                    target = action[7:-1]
+                    if(self.table[target].active == "true"): 
+                        target_idx = int(target.strip("R"))
+                        mutable[target_idx] = 1
+        return mutable
+                    
 
     # returns an array containing all possible states
     def explore_states(self): 
@@ -61,26 +91,43 @@ class CustomVerifier:
                 
                 # if visited, stop
                 if self.visited[self.state_to_decimal(child)]: 
-                    return 
+                    continue 
                 else:
                     self.visited[self.state_to_decimal(child)] = 1
                     self.explore_child(child)
 
     def state_to_decimal(self, state): 
         sum = 0
-        for i, e in enumerate(state): 
+        l = len(state)
+        for i in range(l): 
+            e = state[i]
             if e == 1: 
-                sum += (2**i) * e
+                sum += (2**(l-i-1))
         return sum
     def decimal_to_state(self, num): 
-        return [ "true" if int(i) else "false" for i in list('{0:0b}'.format(num))]
+        return [ "true" if int(i) else "false" for i in list('{0:0{len}b}'.format(num, len=self.num_rules))]
     
 
 if __name__ == "__main__":
     idps = InputParser("../data/idps.txt")
+    start = time()
     verifier = CustomVerifier(idps)
     possible_states = verifier.explore_states()
-    print("possible states are: ", possible_states)
+    end = time()
+    print("Time used: ", '{:.4f} ms'.format((end - start) * 1000))
+    num_all_states = len(possible_states)
+    print("All states (num={}):".format(num_all_states), possible_states)
+    num_visited_states = sum(possible_states)
+    print("Explored (num={}/{}={}%)".format(num_visited_states, num_all_states, num_visited_states / num_all_states * 100))
     for i, e in enumerate(possible_states): 
         if e == 1: # state visited
-            print(verifier.decimal_to_state(i))
+            print("decimal: {}".format(i), verifier.decimal_to_state(i))
+
+    print("Mutable states:")
+    start = time()
+    mutable = verifier.find_mutable()
+    end = time()
+    print(mutable)
+    upper_bound = pow(2, sum(mutable))
+    print("Upper bound of possible states: {} (num={}/{}={}%)".format(upper_bound, upper_bound, num_all_states, upper_bound / num_all_states * 100))
+    print("Time used: ", '{:.4f} ms'.format((end - start) * 1000))
