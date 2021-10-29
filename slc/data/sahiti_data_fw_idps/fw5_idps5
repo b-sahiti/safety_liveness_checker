@@ -1,0 +1,14 @@
+{
+    "R1": {
+        "active": "true",
+        "prio": 100,
+        "match": "src=100,dst=1000",
+        "action": "delete(R0),delete(R1),delete(R4),drop()"
+    },
+    "R3": {
+        "active": "true",
+        "prio": 100,
+        "match": "src=100,dst=1000",
+        "action": "drop()"
+    }
+}

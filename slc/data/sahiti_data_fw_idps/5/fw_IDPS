@@ -1,0 +1,62 @@
+{
+    "R0_R0": {
+        "active": "true,false",
+        "prio": 10000,
+        "match": "src=1000,dst=100",
+        "action": "delete(fw-R0),delete(fw-R1),delete(fw-R3),drop()"
+    },
+    "R0_R1": {
+        "active": "true,false",
+        "prio": 5000,
+        "match": "src=1000,dst=100",
+        "action": "delete(fw-R0),delete(fw-R1),delete(fw-R3),add(IDPS-R0),drop()"
+    },
+    "R0_R4": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1000,dst=100",
+        "action": "delete(fw-R0),delete(fw-R1),delete(fw-R3),send()"
+    },
+    "R1": {
+        "active": "true",
+        "prio": 100,
+        "match": "src=100,dst=1000",
+        "action": "delete(R0),delete(R1),delete(R4),drop()"
+    },
+    "R2_R0": {
+        "active": "true,false",
+        "prio": 10000,
+        "match": "src=1000,dst=100",
+        "action": "drop()"
+    },
+    "R2_R1": {
+        "active": "true,false",
+        "prio": 5000,
+        "match": "src=1000,dst=100",
+        "action": "add(IDPS-R0),drop()"
+    },
+    "R2_R4": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1000,dst=100",
+        "action": "send()"
+    },
+    "R3": {
+        "active": "true",
+        "prio": 100,
+        "match": "src=100,dst=1000",
+        "action": "drop()"
+    },
+    "R4_R3": {
+        "active": "true,true",
+        "prio": 4000,
+        "match": "src=100,dst=1000,port=2222",
+        "action": "add(IDPS-R2),send()"
+    },
+    "R4_R4": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1000",
+        "action": "send()"
+    }
+}

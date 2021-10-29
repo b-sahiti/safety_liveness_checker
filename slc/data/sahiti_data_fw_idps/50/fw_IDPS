@@ -1,0 +1,2222 @@
+{
+    "R0_R0": {
+        "active": "true,false",
+        "prio": 10000,
+        "match": "src=1000,dst=100",
+        "action": "delete(fw-R0),delete(fw-R1),delete(fw-R3),drop()"
+    },
+    "R0_R1": {
+        "active": "true,false",
+        "prio": 5000,
+        "match": "src=1000,dst=100",
+        "action": "delete(fw-R0),delete(fw-R1),delete(fw-R3),add(IDPS-R0),drop()"
+    },
+    "R0_R4": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1000,dst=100",
+        "action": "delete(fw-R0),delete(fw-R1),delete(fw-R3),send()"
+    },
+    "R0_R9": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1000,dst=100",
+        "action": "delete(fw-R0),delete(fw-R1),delete(fw-R3),send()"
+    },
+    "R0_R14": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1000,dst=100",
+        "action": "delete(fw-R0),delete(fw-R1),delete(fw-R3),send()"
+    },
+    "R0_R19": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1000,dst=100",
+        "action": "delete(fw-R0),delete(fw-R1),delete(fw-R3),send()"
+    },
+    "R0_R24": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1000,dst=100",
+        "action": "delete(fw-R0),delete(fw-R1),delete(fw-R3),send()"
+    },
+    "R0_R29": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1000,dst=100",
+        "action": "delete(fw-R0),delete(fw-R1),delete(fw-R3),send()"
+    },
+    "R0_R34": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1000,dst=100",
+        "action": "delete(fw-R0),delete(fw-R1),delete(fw-R3),send()"
+    },
+    "R0_R39": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1000,dst=100",
+        "action": "delete(fw-R0),delete(fw-R1),delete(fw-R3),send()"
+    },
+    "R0_R44": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1000,dst=100",
+        "action": "delete(fw-R0),delete(fw-R1),delete(fw-R3),send()"
+    },
+    "R0_R49": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1000,dst=100",
+        "action": "delete(fw-R0),delete(fw-R1),delete(fw-R3),send()"
+    },
+    "R1": {
+        "active": "true",
+        "prio": 100,
+        "match": "src=100,dst=1000",
+        "action": "delete(R0),delete(R1),delete(R4),drop()"
+    },
+    "R2_R0": {
+        "active": "true,false",
+        "prio": 10000,
+        "match": "src=1000,dst=100",
+        "action": "drop()"
+    },
+    "R2_R1": {
+        "active": "true,false",
+        "prio": 5000,
+        "match": "src=1000,dst=100",
+        "action": "add(IDPS-R0),drop()"
+    },
+    "R2_R4": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1000,dst=100",
+        "action": "send()"
+    },
+    "R2_R9": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1000,dst=100",
+        "action": "send()"
+    },
+    "R2_R14": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1000,dst=100",
+        "action": "send()"
+    },
+    "R2_R19": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1000,dst=100",
+        "action": "send()"
+    },
+    "R2_R24": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1000,dst=100",
+        "action": "send()"
+    },
+    "R2_R29": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1000,dst=100",
+        "action": "send()"
+    },
+    "R2_R34": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1000,dst=100",
+        "action": "send()"
+    },
+    "R2_R39": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1000,dst=100",
+        "action": "send()"
+    },
+    "R2_R44": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1000,dst=100",
+        "action": "send()"
+    },
+    "R2_R49": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1000,dst=100",
+        "action": "send()"
+    },
+    "R3": {
+        "active": "true",
+        "prio": 100,
+        "match": "src=100,dst=1000",
+        "action": "drop()"
+    },
+    "R4_R3": {
+        "active": "true,true",
+        "prio": 4000,
+        "match": "src=100,dst=1000,port=2222",
+        "action": "add(IDPS-R2),send()"
+    },
+    "R4_R4": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1000",
+        "action": "send()"
+    },
+    "R4_R9": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1000",
+        "action": "send()"
+    },
+    "R4_R14": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1000",
+        "action": "send()"
+    },
+    "R4_R19": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1000",
+        "action": "send()"
+    },
+    "R4_R24": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1000",
+        "action": "send()"
+    },
+    "R4_R29": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1000",
+        "action": "send()"
+    },
+    "R4_R34": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1000",
+        "action": "send()"
+    },
+    "R4_R39": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1000",
+        "action": "send()"
+    },
+    "R4_R44": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1000",
+        "action": "send()"
+    },
+    "R4_R49": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1000",
+        "action": "send()"
+    },
+    "R5_R4": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1001,dst=100",
+        "action": "delete(fw-R5),delete(fw-R6),delete(fw-R8),send()"
+    },
+    "R5_R5": {
+        "active": "true,false",
+        "prio": 10000,
+        "match": "src=1001,dst=100",
+        "action": "delete(fw-R5),delete(fw-R6),delete(fw-R8),drop()"
+    },
+    "R5_R6": {
+        "active": "true,false",
+        "prio": 5000,
+        "match": "src=1001,dst=100",
+        "action": "delete(fw-R5),delete(fw-R6),delete(fw-R8),add(IDPS-R5),drop()"
+    },
+    "R5_R9": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1001,dst=100",
+        "action": "delete(fw-R5),delete(fw-R6),delete(fw-R8),send()"
+    },
+    "R5_R14": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1001,dst=100",
+        "action": "delete(fw-R5),delete(fw-R6),delete(fw-R8),send()"
+    },
+    "R5_R19": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1001,dst=100",
+        "action": "delete(fw-R5),delete(fw-R6),delete(fw-R8),send()"
+    },
+    "R5_R24": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1001,dst=100",
+        "action": "delete(fw-R5),delete(fw-R6),delete(fw-R8),send()"
+    },
+    "R5_R29": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1001,dst=100",
+        "action": "delete(fw-R5),delete(fw-R6),delete(fw-R8),send()"
+    },
+    "R5_R34": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1001,dst=100",
+        "action": "delete(fw-R5),delete(fw-R6),delete(fw-R8),send()"
+    },
+    "R5_R39": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1001,dst=100",
+        "action": "delete(fw-R5),delete(fw-R6),delete(fw-R8),send()"
+    },
+    "R5_R44": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1001,dst=100",
+        "action": "delete(fw-R5),delete(fw-R6),delete(fw-R8),send()"
+    },
+    "R5_R49": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1001,dst=100",
+        "action": "delete(fw-R5),delete(fw-R6),delete(fw-R8),send()"
+    },
+    "R6": {
+        "active": "true",
+        "prio": 100,
+        "match": "src=100,dst=1001",
+        "action": "delete(R5),delete(R6),delete(R9),drop()"
+    },
+    "R7_R4": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1001,dst=100",
+        "action": "send()"
+    },
+    "R7_R5": {
+        "active": "true,false",
+        "prio": 10000,
+        "match": "src=1001,dst=100",
+        "action": "drop()"
+    },
+    "R7_R6": {
+        "active": "true,false",
+        "prio": 5000,
+        "match": "src=1001,dst=100",
+        "action": "add(IDPS-R5),drop()"
+    },
+    "R7_R9": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1001,dst=100",
+        "action": "send()"
+    },
+    "R7_R14": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1001,dst=100",
+        "action": "send()"
+    },
+    "R7_R19": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1001,dst=100",
+        "action": "send()"
+    },
+    "R7_R24": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1001,dst=100",
+        "action": "send()"
+    },
+    "R7_R29": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1001,dst=100",
+        "action": "send()"
+    },
+    "R7_R34": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1001,dst=100",
+        "action": "send()"
+    },
+    "R7_R39": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1001,dst=100",
+        "action": "send()"
+    },
+    "R7_R44": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1001,dst=100",
+        "action": "send()"
+    },
+    "R7_R49": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1001,dst=100",
+        "action": "send()"
+    },
+    "R8": {
+        "active": "true",
+        "prio": 100,
+        "match": "src=100,dst=1001",
+        "action": "drop()"
+    },
+    "R9_R4": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1001",
+        "action": "send()"
+    },
+    "R9_R8": {
+        "active": "true,true",
+        "prio": 4000,
+        "match": "src=100,dst=1001,port=2222",
+        "action": "add(IDPS-R7),send()"
+    },
+    "R9_R9": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1001",
+        "action": "send()"
+    },
+    "R9_R14": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1001",
+        "action": "send()"
+    },
+    "R9_R19": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1001",
+        "action": "send()"
+    },
+    "R9_R24": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1001",
+        "action": "send()"
+    },
+    "R9_R29": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1001",
+        "action": "send()"
+    },
+    "R9_R34": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1001",
+        "action": "send()"
+    },
+    "R9_R39": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1001",
+        "action": "send()"
+    },
+    "R9_R44": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1001",
+        "action": "send()"
+    },
+    "R9_R49": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1001",
+        "action": "send()"
+    },
+    "R10_R4": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1002,dst=100",
+        "action": "delete(fw-R10),delete(fw-R11),delete(fw-R13),send()"
+    },
+    "R10_R9": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1002,dst=100",
+        "action": "delete(fw-R10),delete(fw-R11),delete(fw-R13),send()"
+    },
+    "R10_R10": {
+        "active": "true,false",
+        "prio": 10000,
+        "match": "src=1002,dst=100",
+        "action": "delete(fw-R10),delete(fw-R11),delete(fw-R13),drop()"
+    },
+    "R10_R11": {
+        "active": "true,false",
+        "prio": 5000,
+        "match": "src=1002,dst=100",
+        "action": "delete(fw-R10),delete(fw-R11),delete(fw-R13),add(IDPS-R10),drop()"
+    },
+    "R10_R14": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1002,dst=100",
+        "action": "delete(fw-R10),delete(fw-R11),delete(fw-R13),send()"
+    },
+    "R10_R19": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1002,dst=100",
+        "action": "delete(fw-R10),delete(fw-R11),delete(fw-R13),send()"
+    },
+    "R10_R24": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1002,dst=100",
+        "action": "delete(fw-R10),delete(fw-R11),delete(fw-R13),send()"
+    },
+    "R10_R29": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1002,dst=100",
+        "action": "delete(fw-R10),delete(fw-R11),delete(fw-R13),send()"
+    },
+    "R10_R34": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1002,dst=100",
+        "action": "delete(fw-R10),delete(fw-R11),delete(fw-R13),send()"
+    },
+    "R10_R39": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1002,dst=100",
+        "action": "delete(fw-R10),delete(fw-R11),delete(fw-R13),send()"
+    },
+    "R10_R44": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1002,dst=100",
+        "action": "delete(fw-R10),delete(fw-R11),delete(fw-R13),send()"
+    },
+    "R10_R49": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1002,dst=100",
+        "action": "delete(fw-R10),delete(fw-R11),delete(fw-R13),send()"
+    },
+    "R11": {
+        "active": "true",
+        "prio": 100,
+        "match": "src=100,dst=1002",
+        "action": "delete(R10),delete(R11),delete(R14),drop()"
+    },
+    "R12_R4": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1002,dst=100",
+        "action": "send()"
+    },
+    "R12_R9": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1002,dst=100",
+        "action": "send()"
+    },
+    "R12_R10": {
+        "active": "true,false",
+        "prio": 10000,
+        "match": "src=1002,dst=100",
+        "action": "drop()"
+    },
+    "R12_R11": {
+        "active": "true,false",
+        "prio": 5000,
+        "match": "src=1002,dst=100",
+        "action": "add(IDPS-R10),drop()"
+    },
+    "R12_R14": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1002,dst=100",
+        "action": "send()"
+    },
+    "R12_R19": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1002,dst=100",
+        "action": "send()"
+    },
+    "R12_R24": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1002,dst=100",
+        "action": "send()"
+    },
+    "R12_R29": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1002,dst=100",
+        "action": "send()"
+    },
+    "R12_R34": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1002,dst=100",
+        "action": "send()"
+    },
+    "R12_R39": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1002,dst=100",
+        "action": "send()"
+    },
+    "R12_R44": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1002,dst=100",
+        "action": "send()"
+    },
+    "R12_R49": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1002,dst=100",
+        "action": "send()"
+    },
+    "R13": {
+        "active": "true",
+        "prio": 100,
+        "match": "src=100,dst=1002",
+        "action": "drop()"
+    },
+    "R14_R4": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1002",
+        "action": "send()"
+    },
+    "R14_R9": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1002",
+        "action": "send()"
+    },
+    "R14_R13": {
+        "active": "true,true",
+        "prio": 4000,
+        "match": "src=100,dst=1002,port=2222",
+        "action": "add(IDPS-R12),send()"
+    },
+    "R14_R14": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1002",
+        "action": "send()"
+    },
+    "R14_R19": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1002",
+        "action": "send()"
+    },
+    "R14_R24": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1002",
+        "action": "send()"
+    },
+    "R14_R29": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1002",
+        "action": "send()"
+    },
+    "R14_R34": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1002",
+        "action": "send()"
+    },
+    "R14_R39": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1002",
+        "action": "send()"
+    },
+    "R14_R44": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1002",
+        "action": "send()"
+    },
+    "R14_R49": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1002",
+        "action": "send()"
+    },
+    "R15_R4": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1003,dst=100",
+        "action": "delete(fw-R15),delete(fw-R16),delete(fw-R18),send()"
+    },
+    "R15_R9": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1003,dst=100",
+        "action": "delete(fw-R15),delete(fw-R16),delete(fw-R18),send()"
+    },
+    "R15_R14": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1003,dst=100",
+        "action": "delete(fw-R15),delete(fw-R16),delete(fw-R18),send()"
+    },
+    "R15_R15": {
+        "active": "true,false",
+        "prio": 10000,
+        "match": "src=1003,dst=100",
+        "action": "delete(fw-R15),delete(fw-R16),delete(fw-R18),drop()"
+    },
+    "R15_R16": {
+        "active": "true,false",
+        "prio": 5000,
+        "match": "src=1003,dst=100",
+        "action": "delete(fw-R15),delete(fw-R16),delete(fw-R18),add(IDPS-R15),drop()"
+    },
+    "R15_R19": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1003,dst=100",
+        "action": "delete(fw-R15),delete(fw-R16),delete(fw-R18),send()"
+    },
+    "R15_R24": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1003,dst=100",
+        "action": "delete(fw-R15),delete(fw-R16),delete(fw-R18),send()"
+    },
+    "R15_R29": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1003,dst=100",
+        "action": "delete(fw-R15),delete(fw-R16),delete(fw-R18),send()"
+    },
+    "R15_R34": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1003,dst=100",
+        "action": "delete(fw-R15),delete(fw-R16),delete(fw-R18),send()"
+    },
+    "R15_R39": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1003,dst=100",
+        "action": "delete(fw-R15),delete(fw-R16),delete(fw-R18),send()"
+    },
+    "R15_R44": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1003,dst=100",
+        "action": "delete(fw-R15),delete(fw-R16),delete(fw-R18),send()"
+    },
+    "R15_R49": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1003,dst=100",
+        "action": "delete(fw-R15),delete(fw-R16),delete(fw-R18),send()"
+    },
+    "R16": {
+        "active": "true",
+        "prio": 100,
+        "match": "src=100,dst=1003",
+        "action": "delete(R15),delete(R16),delete(R19),drop()"
+    },
+    "R17_R4": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1003,dst=100",
+        "action": "send()"
+    },
+    "R17_R9": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1003,dst=100",
+        "action": "send()"
+    },
+    "R17_R14": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1003,dst=100",
+        "action": "send()"
+    },
+    "R17_R15": {
+        "active": "true,false",
+        "prio": 10000,
+        "match": "src=1003,dst=100",
+        "action": "drop()"
+    },
+    "R17_R16": {
+        "active": "true,false",
+        "prio": 5000,
+        "match": "src=1003,dst=100",
+        "action": "add(IDPS-R15),drop()"
+    },
+    "R17_R19": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1003,dst=100",
+        "action": "send()"
+    },
+    "R17_R24": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1003,dst=100",
+        "action": "send()"
+    },
+    "R17_R29": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1003,dst=100",
+        "action": "send()"
+    },
+    "R17_R34": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1003,dst=100",
+        "action": "send()"
+    },
+    "R17_R39": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1003,dst=100",
+        "action": "send()"
+    },
+    "R17_R44": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1003,dst=100",
+        "action": "send()"
+    },
+    "R17_R49": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1003,dst=100",
+        "action": "send()"
+    },
+    "R18": {
+        "active": "true",
+        "prio": 100,
+        "match": "src=100,dst=1003",
+        "action": "drop()"
+    },
+    "R19_R4": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1003",
+        "action": "send()"
+    },
+    "R19_R9": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1003",
+        "action": "send()"
+    },
+    "R19_R14": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1003",
+        "action": "send()"
+    },
+    "R19_R18": {
+        "active": "true,true",
+        "prio": 4000,
+        "match": "src=100,dst=1003,port=2222",
+        "action": "add(IDPS-R17),send()"
+    },
+    "R19_R19": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1003",
+        "action": "send()"
+    },
+    "R19_R24": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1003",
+        "action": "send()"
+    },
+    "R19_R29": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1003",
+        "action": "send()"
+    },
+    "R19_R34": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1003",
+        "action": "send()"
+    },
+    "R19_R39": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1003",
+        "action": "send()"
+    },
+    "R19_R44": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1003",
+        "action": "send()"
+    },
+    "R19_R49": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1003",
+        "action": "send()"
+    },
+    "R20_R4": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1004,dst=100",
+        "action": "delete(fw-R20),delete(fw-R21),delete(fw-R23),send()"
+    },
+    "R20_R9": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1004,dst=100",
+        "action": "delete(fw-R20),delete(fw-R21),delete(fw-R23),send()"
+    },
+    "R20_R14": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1004,dst=100",
+        "action": "delete(fw-R20),delete(fw-R21),delete(fw-R23),send()"
+    },
+    "R20_R19": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1004,dst=100",
+        "action": "delete(fw-R20),delete(fw-R21),delete(fw-R23),send()"
+    },
+    "R20_R20": {
+        "active": "true,false",
+        "prio": 10000,
+        "match": "src=1004,dst=100",
+        "action": "delete(fw-R20),delete(fw-R21),delete(fw-R23),drop()"
+    },
+    "R20_R21": {
+        "active": "true,false",
+        "prio": 5000,
+        "match": "src=1004,dst=100",
+        "action": "delete(fw-R20),delete(fw-R21),delete(fw-R23),add(IDPS-R20),drop()"
+    },
+    "R20_R24": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1004,dst=100",
+        "action": "delete(fw-R20),delete(fw-R21),delete(fw-R23),send()"
+    },
+    "R20_R29": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1004,dst=100",
+        "action": "delete(fw-R20),delete(fw-R21),delete(fw-R23),send()"
+    },
+    "R20_R34": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1004,dst=100",
+        "action": "delete(fw-R20),delete(fw-R21),delete(fw-R23),send()"
+    },
+    "R20_R39": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1004,dst=100",
+        "action": "delete(fw-R20),delete(fw-R21),delete(fw-R23),send()"
+    },
+    "R20_R44": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1004,dst=100",
+        "action": "delete(fw-R20),delete(fw-R21),delete(fw-R23),send()"
+    },
+    "R20_R49": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1004,dst=100",
+        "action": "delete(fw-R20),delete(fw-R21),delete(fw-R23),send()"
+    },
+    "R21": {
+        "active": "true",
+        "prio": 100,
+        "match": "src=100,dst=1004",
+        "action": "delete(R20),delete(R21),delete(R24),drop()"
+    },
+    "R22_R4": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1004,dst=100",
+        "action": "send()"
+    },
+    "R22_R9": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1004,dst=100",
+        "action": "send()"
+    },
+    "R22_R14": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1004,dst=100",
+        "action": "send()"
+    },
+    "R22_R19": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1004,dst=100",
+        "action": "send()"
+    },
+    "R22_R20": {
+        "active": "true,false",
+        "prio": 10000,
+        "match": "src=1004,dst=100",
+        "action": "drop()"
+    },
+    "R22_R21": {
+        "active": "true,false",
+        "prio": 5000,
+        "match": "src=1004,dst=100",
+        "action": "add(IDPS-R20),drop()"
+    },
+    "R22_R24": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1004,dst=100",
+        "action": "send()"
+    },
+    "R22_R29": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1004,dst=100",
+        "action": "send()"
+    },
+    "R22_R34": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1004,dst=100",
+        "action": "send()"
+    },
+    "R22_R39": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1004,dst=100",
+        "action": "send()"
+    },
+    "R22_R44": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1004,dst=100",
+        "action": "send()"
+    },
+    "R22_R49": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1004,dst=100",
+        "action": "send()"
+    },
+    "R23": {
+        "active": "true",
+        "prio": 100,
+        "match": "src=100,dst=1004",
+        "action": "drop()"
+    },
+    "R24_R4": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1004",
+        "action": "send()"
+    },
+    "R24_R9": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1004",
+        "action": "send()"
+    },
+    "R24_R14": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1004",
+        "action": "send()"
+    },
+    "R24_R19": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1004",
+        "action": "send()"
+    },
+    "R24_R23": {
+        "active": "true,true",
+        "prio": 4000,
+        "match": "src=100,dst=1004,port=2222",
+        "action": "add(IDPS-R22),send()"
+    },
+    "R24_R24": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1004",
+        "action": "send()"
+    },
+    "R24_R29": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1004",
+        "action": "send()"
+    },
+    "R24_R34": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1004",
+        "action": "send()"
+    },
+    "R24_R39": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1004",
+        "action": "send()"
+    },
+    "R24_R44": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1004",
+        "action": "send()"
+    },
+    "R24_R49": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1004",
+        "action": "send()"
+    },
+    "R25_R4": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1005,dst=100",
+        "action": "delete(fw-R25),delete(fw-R26),delete(fw-R28),send()"
+    },
+    "R25_R9": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1005,dst=100",
+        "action": "delete(fw-R25),delete(fw-R26),delete(fw-R28),send()"
+    },
+    "R25_R14": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1005,dst=100",
+        "action": "delete(fw-R25),delete(fw-R26),delete(fw-R28),send()"
+    },
+    "R25_R19": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1005,dst=100",
+        "action": "delete(fw-R25),delete(fw-R26),delete(fw-R28),send()"
+    },
+    "R25_R24": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1005,dst=100",
+        "action": "delete(fw-R25),delete(fw-R26),delete(fw-R28),send()"
+    },
+    "R25_R25": {
+        "active": "true,false",
+        "prio": 10000,
+        "match": "src=1005,dst=100",
+        "action": "delete(fw-R25),delete(fw-R26),delete(fw-R28),drop()"
+    },
+    "R25_R26": {
+        "active": "true,false",
+        "prio": 5000,
+        "match": "src=1005,dst=100",
+        "action": "delete(fw-R25),delete(fw-R26),delete(fw-R28),add(IDPS-R25),drop()"
+    },
+    "R25_R29": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1005,dst=100",
+        "action": "delete(fw-R25),delete(fw-R26),delete(fw-R28),send()"
+    },
+    "R25_R34": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1005,dst=100",
+        "action": "delete(fw-R25),delete(fw-R26),delete(fw-R28),send()"
+    },
+    "R25_R39": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1005,dst=100",
+        "action": "delete(fw-R25),delete(fw-R26),delete(fw-R28),send()"
+    },
+    "R25_R44": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1005,dst=100",
+        "action": "delete(fw-R25),delete(fw-R26),delete(fw-R28),send()"
+    },
+    "R25_R49": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1005,dst=100",
+        "action": "delete(fw-R25),delete(fw-R26),delete(fw-R28),send()"
+    },
+    "R26": {
+        "active": "true",
+        "prio": 100,
+        "match": "src=100,dst=1005",
+        "action": "delete(R25),delete(R26),delete(R29),drop()"
+    },
+    "R27_R4": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1005,dst=100",
+        "action": "send()"
+    },
+    "R27_R9": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1005,dst=100",
+        "action": "send()"
+    },
+    "R27_R14": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1005,dst=100",
+        "action": "send()"
+    },
+    "R27_R19": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1005,dst=100",
+        "action": "send()"
+    },
+    "R27_R24": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1005,dst=100",
+        "action": "send()"
+    },
+    "R27_R25": {
+        "active": "true,false",
+        "prio": 10000,
+        "match": "src=1005,dst=100",
+        "action": "drop()"
+    },
+    "R27_R26": {
+        "active": "true,false",
+        "prio": 5000,
+        "match": "src=1005,dst=100",
+        "action": "add(IDPS-R25),drop()"
+    },
+    "R27_R29": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1005,dst=100",
+        "action": "send()"
+    },
+    "R27_R34": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1005,dst=100",
+        "action": "send()"
+    },
+    "R27_R39": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1005,dst=100",
+        "action": "send()"
+    },
+    "R27_R44": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1005,dst=100",
+        "action": "send()"
+    },
+    "R27_R49": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1005,dst=100",
+        "action": "send()"
+    },
+    "R28": {
+        "active": "true",
+        "prio": 100,
+        "match": "src=100,dst=1005",
+        "action": "drop()"
+    },
+    "R29_R4": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1005",
+        "action": "send()"
+    },
+    "R29_R9": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1005",
+        "action": "send()"
+    },
+    "R29_R14": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1005",
+        "action": "send()"
+    },
+    "R29_R19": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1005",
+        "action": "send()"
+    },
+    "R29_R24": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1005",
+        "action": "send()"
+    },
+    "R29_R28": {
+        "active": "true,true",
+        "prio": 4000,
+        "match": "src=100,dst=1005,port=2222",
+        "action": "add(IDPS-R27),send()"
+    },
+    "R29_R29": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1005",
+        "action": "send()"
+    },
+    "R29_R34": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1005",
+        "action": "send()"
+    },
+    "R29_R39": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1005",
+        "action": "send()"
+    },
+    "R29_R44": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1005",
+        "action": "send()"
+    },
+    "R29_R49": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1005",
+        "action": "send()"
+    },
+    "R30_R4": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1006,dst=100",
+        "action": "delete(fw-R30),delete(fw-R31),delete(fw-R33),send()"
+    },
+    "R30_R9": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1006,dst=100",
+        "action": "delete(fw-R30),delete(fw-R31),delete(fw-R33),send()"
+    },
+    "R30_R14": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1006,dst=100",
+        "action": "delete(fw-R30),delete(fw-R31),delete(fw-R33),send()"
+    },
+    "R30_R19": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1006,dst=100",
+        "action": "delete(fw-R30),delete(fw-R31),delete(fw-R33),send()"
+    },
+    "R30_R24": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1006,dst=100",
+        "action": "delete(fw-R30),delete(fw-R31),delete(fw-R33),send()"
+    },
+    "R30_R29": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1006,dst=100",
+        "action": "delete(fw-R30),delete(fw-R31),delete(fw-R33),send()"
+    },
+    "R30_R30": {
+        "active": "true,false",
+        "prio": 10000,
+        "match": "src=1006,dst=100",
+        "action": "delete(fw-R30),delete(fw-R31),delete(fw-R33),drop()"
+    },
+    "R30_R31": {
+        "active": "true,false",
+        "prio": 5000,
+        "match": "src=1006,dst=100",
+        "action": "delete(fw-R30),delete(fw-R31),delete(fw-R33),add(IDPS-R30),drop()"
+    },
+    "R30_R34": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1006,dst=100",
+        "action": "delete(fw-R30),delete(fw-R31),delete(fw-R33),send()"
+    },
+    "R30_R39": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1006,dst=100",
+        "action": "delete(fw-R30),delete(fw-R31),delete(fw-R33),send()"
+    },
+    "R30_R44": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1006,dst=100",
+        "action": "delete(fw-R30),delete(fw-R31),delete(fw-R33),send()"
+    },
+    "R30_R49": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1006,dst=100",
+        "action": "delete(fw-R30),delete(fw-R31),delete(fw-R33),send()"
+    },
+    "R31": {
+        "active": "true",
+        "prio": 100,
+        "match": "src=100,dst=1006",
+        "action": "delete(R30),delete(R31),delete(R34),drop()"
+    },
+    "R32_R4": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1006,dst=100",
+        "action": "send()"
+    },
+    "R32_R9": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1006,dst=100",
+        "action": "send()"
+    },
+    "R32_R14": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1006,dst=100",
+        "action": "send()"
+    },
+    "R32_R19": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1006,dst=100",
+        "action": "send()"
+    },
+    "R32_R24": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1006,dst=100",
+        "action": "send()"
+    },
+    "R32_R29": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1006,dst=100",
+        "action": "send()"
+    },
+    "R32_R30": {
+        "active": "true,false",
+        "prio": 10000,
+        "match": "src=1006,dst=100",
+        "action": "drop()"
+    },
+    "R32_R31": {
+        "active": "true,false",
+        "prio": 5000,
+        "match": "src=1006,dst=100",
+        "action": "add(IDPS-R30),drop()"
+    },
+    "R32_R34": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1006,dst=100",
+        "action": "send()"
+    },
+    "R32_R39": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1006,dst=100",
+        "action": "send()"
+    },
+    "R32_R44": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1006,dst=100",
+        "action": "send()"
+    },
+    "R32_R49": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1006,dst=100",
+        "action": "send()"
+    },
+    "R33": {
+        "active": "true",
+        "prio": 100,
+        "match": "src=100,dst=1006",
+        "action": "drop()"
+    },
+    "R34_R4": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1006",
+        "action": "send()"
+    },
+    "R34_R9": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1006",
+        "action": "send()"
+    },
+    "R34_R14": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1006",
+        "action": "send()"
+    },
+    "R34_R19": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1006",
+        "action": "send()"
+    },
+    "R34_R24": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1006",
+        "action": "send()"
+    },
+    "R34_R29": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1006",
+        "action": "send()"
+    },
+    "R34_R33": {
+        "active": "true,true",
+        "prio": 4000,
+        "match": "src=100,dst=1006,port=2222",
+        "action": "add(IDPS-R32),send()"
+    },
+    "R34_R34": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1006",
+        "action": "send()"
+    },
+    "R34_R39": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1006",
+        "action": "send()"
+    },
+    "R34_R44": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1006",
+        "action": "send()"
+    },
+    "R34_R49": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1006",
+        "action": "send()"
+    },
+    "R35_R4": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1007,dst=100",
+        "action": "delete(fw-R35),delete(fw-R36),delete(fw-R38),send()"
+    },
+    "R35_R9": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1007,dst=100",
+        "action": "delete(fw-R35),delete(fw-R36),delete(fw-R38),send()"
+    },
+    "R35_R14": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1007,dst=100",
+        "action": "delete(fw-R35),delete(fw-R36),delete(fw-R38),send()"
+    },
+    "R35_R19": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1007,dst=100",
+        "action": "delete(fw-R35),delete(fw-R36),delete(fw-R38),send()"
+    },
+    "R35_R24": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1007,dst=100",
+        "action": "delete(fw-R35),delete(fw-R36),delete(fw-R38),send()"
+    },
+    "R35_R29": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1007,dst=100",
+        "action": "delete(fw-R35),delete(fw-R36),delete(fw-R38),send()"
+    },
+    "R35_R34": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1007,dst=100",
+        "action": "delete(fw-R35),delete(fw-R36),delete(fw-R38),send()"
+    },
+    "R35_R35": {
+        "active": "true,false",
+        "prio": 10000,
+        "match": "src=1007,dst=100",
+        "action": "delete(fw-R35),delete(fw-R36),delete(fw-R38),drop()"
+    },
+    "R35_R36": {
+        "active": "true,false",
+        "prio": 5000,
+        "match": "src=1007,dst=100",
+        "action": "delete(fw-R35),delete(fw-R36),delete(fw-R38),add(IDPS-R35),drop()"
+    },
+    "R35_R39": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1007,dst=100",
+        "action": "delete(fw-R35),delete(fw-R36),delete(fw-R38),send()"
+    },
+    "R35_R44": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1007,dst=100",
+        "action": "delete(fw-R35),delete(fw-R36),delete(fw-R38),send()"
+    },
+    "R35_R49": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1007,dst=100",
+        "action": "delete(fw-R35),delete(fw-R36),delete(fw-R38),send()"
+    },
+    "R36": {
+        "active": "true",
+        "prio": 100,
+        "match": "src=100,dst=1007",
+        "action": "delete(R35),delete(R36),delete(R39),drop()"
+    },
+    "R37_R4": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1007,dst=100",
+        "action": "send()"
+    },
+    "R37_R9": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1007,dst=100",
+        "action": "send()"
+    },
+    "R37_R14": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1007,dst=100",
+        "action": "send()"
+    },
+    "R37_R19": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1007,dst=100",
+        "action": "send()"
+    },
+    "R37_R24": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1007,dst=100",
+        "action": "send()"
+    },
+    "R37_R29": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1007,dst=100",
+        "action": "send()"
+    },
+    "R37_R34": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1007,dst=100",
+        "action": "send()"
+    },
+    "R37_R35": {
+        "active": "true,false",
+        "prio": 10000,
+        "match": "src=1007,dst=100",
+        "action": "drop()"
+    },
+    "R37_R36": {
+        "active": "true,false",
+        "prio": 5000,
+        "match": "src=1007,dst=100",
+        "action": "add(IDPS-R35),drop()"
+    },
+    "R37_R39": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1007,dst=100",
+        "action": "send()"
+    },
+    "R37_R44": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1007,dst=100",
+        "action": "send()"
+    },
+    "R37_R49": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1007,dst=100",
+        "action": "send()"
+    },
+    "R38": {
+        "active": "true",
+        "prio": 100,
+        "match": "src=100,dst=1007",
+        "action": "drop()"
+    },
+    "R39_R4": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1007",
+        "action": "send()"
+    },
+    "R39_R9": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1007",
+        "action": "send()"
+    },
+    "R39_R14": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1007",
+        "action": "send()"
+    },
+    "R39_R19": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1007",
+        "action": "send()"
+    },
+    "R39_R24": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1007",
+        "action": "send()"
+    },
+    "R39_R29": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1007",
+        "action": "send()"
+    },
+    "R39_R34": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1007",
+        "action": "send()"
+    },
+    "R39_R38": {
+        "active": "true,true",
+        "prio": 4000,
+        "match": "src=100,dst=1007,port=2222",
+        "action": "add(IDPS-R37),send()"
+    },
+    "R39_R39": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1007",
+        "action": "send()"
+    },
+    "R39_R44": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1007",
+        "action": "send()"
+    },
+    "R39_R49": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1007",
+        "action": "send()"
+    },
+    "R40_R4": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1008,dst=100",
+        "action": "delete(fw-R40),delete(fw-R41),delete(fw-R43),send()"
+    },
+    "R40_R9": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1008,dst=100",
+        "action": "delete(fw-R40),delete(fw-R41),delete(fw-R43),send()"
+    },
+    "R40_R14": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1008,dst=100",
+        "action": "delete(fw-R40),delete(fw-R41),delete(fw-R43),send()"
+    },
+    "R40_R19": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1008,dst=100",
+        "action": "delete(fw-R40),delete(fw-R41),delete(fw-R43),send()"
+    },
+    "R40_R24": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1008,dst=100",
+        "action": "delete(fw-R40),delete(fw-R41),delete(fw-R43),send()"
+    },
+    "R40_R29": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1008,dst=100",
+        "action": "delete(fw-R40),delete(fw-R41),delete(fw-R43),send()"
+    },
+    "R40_R34": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1008,dst=100",
+        "action": "delete(fw-R40),delete(fw-R41),delete(fw-R43),send()"
+    },
+    "R40_R39": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1008,dst=100",
+        "action": "delete(fw-R40),delete(fw-R41),delete(fw-R43),send()"
+    },
+    "R40_R40": {
+        "active": "true,false",
+        "prio": 10000,
+        "match": "src=1008,dst=100",
+        "action": "delete(fw-R40),delete(fw-R41),delete(fw-R43),drop()"
+    },
+    "R40_R41": {
+        "active": "true,false",
+        "prio": 5000,
+        "match": "src=1008,dst=100",
+        "action": "delete(fw-R40),delete(fw-R41),delete(fw-R43),add(IDPS-R40),drop()"
+    },
+    "R40_R44": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1008,dst=100",
+        "action": "delete(fw-R40),delete(fw-R41),delete(fw-R43),send()"
+    },
+    "R40_R49": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1008,dst=100",
+        "action": "delete(fw-R40),delete(fw-R41),delete(fw-R43),send()"
+    },
+    "R41": {
+        "active": "true",
+        "prio": 100,
+        "match": "src=100,dst=1008",
+        "action": "delete(R40),delete(R41),delete(R44),drop()"
+    },
+    "R42_R4": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1008,dst=100",
+        "action": "send()"
+    },
+    "R42_R9": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1008,dst=100",
+        "action": "send()"
+    },
+    "R42_R14": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1008,dst=100",
+        "action": "send()"
+    },
+    "R42_R19": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1008,dst=100",
+        "action": "send()"
+    },
+    "R42_R24": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1008,dst=100",
+        "action": "send()"
+    },
+    "R42_R29": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1008,dst=100",
+        "action": "send()"
+    },
+    "R42_R34": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1008,dst=100",
+        "action": "send()"
+    },
+    "R42_R39": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1008,dst=100",
+        "action": "send()"
+    },
+    "R42_R40": {
+        "active": "true,false",
+        "prio": 10000,
+        "match": "src=1008,dst=100",
+        "action": "drop()"
+    },
+    "R42_R41": {
+        "active": "true,false",
+        "prio": 5000,
+        "match": "src=1008,dst=100",
+        "action": "add(IDPS-R40),drop()"
+    },
+    "R42_R44": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1008,dst=100",
+        "action": "send()"
+    },
+    "R42_R49": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1008,dst=100",
+        "action": "send()"
+    },
+    "R43": {
+        "active": "true",
+        "prio": 100,
+        "match": "src=100,dst=1008",
+        "action": "drop()"
+    },
+    "R44_R4": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1008",
+        "action": "send()"
+    },
+    "R44_R9": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1008",
+        "action": "send()"
+    },
+    "R44_R14": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1008",
+        "action": "send()"
+    },
+    "R44_R19": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1008",
+        "action": "send()"
+    },
+    "R44_R24": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1008",
+        "action": "send()"
+    },
+    "R44_R29": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1008",
+        "action": "send()"
+    },
+    "R44_R34": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1008",
+        "action": "send()"
+    },
+    "R44_R39": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1008",
+        "action": "send()"
+    },
+    "R44_R43": {
+        "active": "true,true",
+        "prio": 4000,
+        "match": "src=100,dst=1008,port=2222",
+        "action": "add(IDPS-R42),send()"
+    },
+    "R44_R44": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1008",
+        "action": "send()"
+    },
+    "R44_R49": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1008",
+        "action": "send()"
+    },
+    "R45_R4": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1009,dst=100",
+        "action": "delete(fw-R45),delete(fw-R46),delete(fw-R48),send()"
+    },
+    "R45_R9": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1009,dst=100",
+        "action": "delete(fw-R45),delete(fw-R46),delete(fw-R48),send()"
+    },
+    "R45_R14": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1009,dst=100",
+        "action": "delete(fw-R45),delete(fw-R46),delete(fw-R48),send()"
+    },
+    "R45_R19": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1009,dst=100",
+        "action": "delete(fw-R45),delete(fw-R46),delete(fw-R48),send()"
+    },
+    "R45_R24": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1009,dst=100",
+        "action": "delete(fw-R45),delete(fw-R46),delete(fw-R48),send()"
+    },
+    "R45_R29": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1009,dst=100",
+        "action": "delete(fw-R45),delete(fw-R46),delete(fw-R48),send()"
+    },
+    "R45_R34": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1009,dst=100",
+        "action": "delete(fw-R45),delete(fw-R46),delete(fw-R48),send()"
+    },
+    "R45_R39": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1009,dst=100",
+        "action": "delete(fw-R45),delete(fw-R46),delete(fw-R48),send()"
+    },
+    "R45_R44": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1009,dst=100",
+        "action": "delete(fw-R45),delete(fw-R46),delete(fw-R48),send()"
+    },
+    "R45_R45": {
+        "active": "true,false",
+        "prio": 10000,
+        "match": "src=1009,dst=100",
+        "action": "delete(fw-R45),delete(fw-R46),delete(fw-R48),drop()"
+    },
+    "R45_R46": {
+        "active": "true,false",
+        "prio": 5000,
+        "match": "src=1009,dst=100",
+        "action": "delete(fw-R45),delete(fw-R46),delete(fw-R48),add(IDPS-R45),drop()"
+    },
+    "R45_R49": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1009,dst=100",
+        "action": "delete(fw-R45),delete(fw-R46),delete(fw-R48),send()"
+    },
+    "R46": {
+        "active": "true",
+        "prio": 100,
+        "match": "src=100,dst=1009",
+        "action": "delete(R45),delete(R46),delete(R49),drop()"
+    },
+    "R47_R4": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1009,dst=100",
+        "action": "send()"
+    },
+    "R47_R9": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1009,dst=100",
+        "action": "send()"
+    },
+    "R47_R14": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1009,dst=100",
+        "action": "send()"
+    },
+    "R47_R19": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1009,dst=100",
+        "action": "send()"
+    },
+    "R47_R24": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1009,dst=100",
+        "action": "send()"
+    },
+    "R47_R29": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1009,dst=100",
+        "action": "send()"
+    },
+    "R47_R34": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1009,dst=100",
+        "action": "send()"
+    },
+    "R47_R39": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1009,dst=100",
+        "action": "send()"
+    },
+    "R47_R44": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1009,dst=100",
+        "action": "send()"
+    },
+    "R47_R45": {
+        "active": "true,false",
+        "prio": 10000,
+        "match": "src=1009,dst=100",
+        "action": "drop()"
+    },
+    "R47_R46": {
+        "active": "true,false",
+        "prio": 5000,
+        "match": "src=1009,dst=100",
+        "action": "add(IDPS-R45),drop()"
+    },
+    "R47_R49": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=1009,dst=100",
+        "action": "send()"
+    },
+    "R48": {
+        "active": "true",
+        "prio": 100,
+        "match": "src=100,dst=1009",
+        "action": "drop()"
+    },
+    "R49_R4": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1009",
+        "action": "send()"
+    },
+    "R49_R9": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1009",
+        "action": "send()"
+    },
+    "R49_R14": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1009",
+        "action": "send()"
+    },
+    "R49_R19": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1009",
+        "action": "send()"
+    },
+    "R49_R24": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1009",
+        "action": "send()"
+    },
+    "R49_R29": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1009",
+        "action": "send()"
+    },
+    "R49_R34": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1009",
+        "action": "send()"
+    },
+    "R49_R39": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1009",
+        "action": "send()"
+    },
+    "R49_R44": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1009",
+        "action": "send()"
+    },
+    "R49_R48": {
+        "active": "true,true",
+        "prio": 4000,
+        "match": "src=100,dst=1009,port=2222",
+        "action": "add(IDPS-R47),send()"
+    },
+    "R49_R49": {
+        "active": "true,true",
+        "prio": 1000,
+        "match": "src=100,dst=1009",
+        "action": "send()"
+    }
+}
