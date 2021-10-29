@@ -33,3 +33,13 @@ boolean global_drop(match_fields, topology):
             return false
     return true
 
+boolean global_reachability(match_fields, topology):
+    paths = list()
+    for edge_device in topology:
+        paths.append(dfs(topology, edge_device, dst))
+    for path in paths:
+        for device in path:
+            if not device.will_forward(match_fields, next_hop):
+                return false
+    return true
+
