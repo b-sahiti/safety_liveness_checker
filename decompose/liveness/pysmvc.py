@@ -45,7 +45,7 @@ def getprop(prop, l, l1, actions, packets):
 
 def helper(rule_file, prop, smv_filename):
     pop = prop.split(";")
-    f = open(g, "r")
+    f = open(rule_file, "r")
     b = open(smv_filename, "w")
     lines = f.readlines()
     r = []
@@ -230,7 +230,7 @@ def helper(rule_file, prop, smv_filename):
 def main():
     rule_file = sys.argv[1]
     smv_filename = sys.argv[2]
-    helper(rule_file, "src=I,dst=E;drop()", smv_filename)
+    helper(rule_file, "src=I,dst=blabla;drop()", smv_filename)
 
 
 if __name__ == "__main__":

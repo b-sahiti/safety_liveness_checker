@@ -3,37 +3,39 @@ import decompose.topology as topo
 import re
 
 
-def global_drop(match_fields, topology):
+# prop: src=E;dst=I;drop()
+def global_drop(prop, topology):
     paths = list()
-    dst_id = re.search('(?<=dst=)\w+', match_fields).group(0)
+    dst_id = re.search('(?<=dst=)\w+', prop).group(0)
     edge_devices_ids = list()
     indegrees = set()
 
-    # count devices indegree
     for device_id in topology:
         device = topology[device_id]
-        for child_id in device.children_ids:
-            indegrees.add(child_id)
-
-    for device_id in topology:
-        # indegree = 0
-        if not (device_id in indegrees):
+        if device.is_edge:
             edge_devices_ids.append(device_id)
 
     for edge_id in edge_devices_ids:
-        paths.append(topo.get_paths(topology, edge_id, dst_id))
+        curr_paths = topo.get_paths(topology, edge_id, dst_id)
+        for path in curr_paths:
+            paths.append(path)
+
     for path in paths:
         for device_id in path:
+            dropping = False
             device = topology[device_id]
-            if device.local_drop(match_fields):
+            if device.local_drop(prop):
+                dropping = True
                 break
         # if reach here, then none of the device along the path always drops the packet
-        return False
+        if not dropping:
+            return False
     return True
 
 
 if __name__ == '__main__':
     f = open("topo_sample.json")
     graph = topo.load_graph(f)
+    print(global_drop("src=E,dst=I;drop()", graph))
     paths = topo.get_paths(graph, "fw1", "switch2")
     print(paths)

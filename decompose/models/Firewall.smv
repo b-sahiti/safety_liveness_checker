@@ -1,0 +1,10 @@
+MODULE R0()
+VAR
+	active:boolean;
+ASSIGN
+	init(active) := TRUE;
+
+MODULE main
+VAR
+	r0 : process R0();
+SPEC r0.active=TRUE&TRUE&FALSE|!(r0.active=TRUE&TRUE)&TRUE

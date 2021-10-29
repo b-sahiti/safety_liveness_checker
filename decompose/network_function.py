@@ -57,9 +57,9 @@ class NetworkFunction:
 
     # return false if device doesn't always drop packets with given condition
     def local_drop(self, match_condition):
-        self.smv = "./models" + self.name + ".smv"
-        pysmvc.helper(rule_file=self.rule_filename, prop=match_condition + "drop()", smv_filename=self.smv)
-        s = subprocess.run(["../NuSMV-2.6.0-win64/bin/NuSMV.exe", self.name + ".smv"], stdout=subprocess.PIPE,
+        self.smv = "./models/" + self.name + ".smv"
+        pysmvc.helper(rule_file=self.rule_file, prop=match_condition, smv_filename=self.smv)
+        s = subprocess.run(["../NuSMV-2.6.0-win64/bin/NuSMV.exe", self.smv], stdout=subprocess.PIPE,
                            stderr=subprocess.PIPE)
         res = re.search("(?<=\)\s\sis\s).*(?=\\r)", s.stdout.decode("utf-8")).group(0)
         if res is None:

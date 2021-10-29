@@ -1,0 +1,2 @@
+rule active prio match action
+R0 true 100 src=E,dst=I drop()

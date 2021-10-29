@@ -4,26 +4,26 @@
             "name": "Firewall",
             "id": "fw1",
             "is_edge": true,
-            "rule_file": "./Firewall.txt",
+            "rule_file": "./rules/Firewall_drop_all.txt",
             "children_ids": [
                 "switch1",
-                "switch2"
+                "I"
             ]
         },
         {
             "name":"Switch 1",
             "id": "switch1",
             "is_edge": false,
-            "rule_file": "./switch_1.txt",
+            "rule_file": "./rules/switch_1.txt",
             "children_ids": [
-                "switch2"
+                "I"
             ]
         },
         {
             "name":"Switch 2",
-            "id": "switch2",
+            "id": "I",
             "is_edge": false,
-            "rule_file": "./switch_2.txt",
+            "rule_file": "./rules/switch_2.txt",
             "children_ids": [
             ]
         }
