@@ -43,3 +43,29 @@ boolean global_reachability(match_fields, topology):
                 return false
     return true
 
+Nov 16
+Redefine "children" in network topology:
+    A network device C is a child of another network device D, iff at least one rule in device D contains send(C)
+
+F (src=A, dst=H;send(I)), the network will eventually reach a state where matching packets will be delivered to its destination.
+
+Suppose the network contains only one edge device E, and there's only one path from E to H. Then:
+    F (src=A, dst=H;send(I)) over entire network = F (src=A, dst=H;send(I)) over this path
+To verify F (src=A, dst=H;send(I)) over a path, we can compute the compound rule table and verify the property directly.
+
+Consider there are multiple paths from distinct edge devices to the destination host. If we consider the network as a whole, then our property is saying that
+the network will always reach a state in the future in which all these paths works. If we assert that all paths need to work at the same time, then we need to consider
+the compound table consists of all devices along the path.
+    F (src=A, dst=H;send(I)) over entire network = F (src=A, dst=H;send(I)) over the compound state machine of all devices along all shortest paths from edges to destination
+
+We can also loosen the requirement by only requiring each path to eventually work. That is:
+    F (src=A, dst=H;send(I)) over entire network = Jointly AND (F (src=A, dst=H;send(I)) ) on all paths
+
+Note:
+1. Find counterexample to prove tha decomposing eventuality is infeasible
+2. Only need to find k-shortest paths
+3. Only need to check k-shortest paths from src to dest for eventuality. If one of them work then eventuality is true. If src is outside of network,
+then treat each edge device as source and verify independently.
+
+
+

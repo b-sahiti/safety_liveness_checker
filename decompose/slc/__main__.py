@@ -1,6 +1,6 @@
-import os, json
-from slc.src.utility import InputParser
-from slc.src.combine_tables import combTables
+import json
+from decompose.slc.src.utility import InputParser
+from decompose.slc.src.combine_tables import combTables
 if __name__ == "__main__":
     fw=InputParser("slc/data/firewalls.txt")
     idps = InputParser("slc/data/idps.txt")

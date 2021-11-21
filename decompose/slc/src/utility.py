@@ -1,6 +1,6 @@
 import os
 import json
-from slc.src.log_module import log
+from decompose.slc.src.log_module import log
 from collections import namedtuple
 
 project_root_dir = os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__file__)), ".."))

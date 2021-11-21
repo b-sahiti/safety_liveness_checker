@@ -1,6 +1,5 @@
-from slc.src.utility import Rule
-from slc.src.log_module import log
-from slc.src.utility import Rule
+from decompose.slc.src.log_module import log
+from decompose.slc.src.utility import Rule
 
 def combTables(T1,T2,T1_name,T2_name):
     merged_table={}
