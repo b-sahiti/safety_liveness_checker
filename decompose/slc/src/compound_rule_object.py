@@ -55,7 +55,7 @@ class CompoundRule:
 
             other_rules_to_change = list()
             for r in self.other_compound_rules:
-                if str.split(r, "_")[nth] == target_rule:
+                if len(str.split(r, "_")) > nth and str.split(r, "_")[nth] == target_rule:
                     other_rules_to_change.append(r)
 
             if str.split(self.name, "_")[nth] == target_rule:

@@ -1,0 +1,25 @@
+{
+  "order": [
+    "fw",
+    "s1",
+    "s2"
+  ],
+  "R0_R0": {
+    "action": "delete(fw-R0),add(fw-R1),delete(s1-R0),add(s1-R1),drop()",
+    "active": "true,true",
+    "match": "src=E,dst=I",
+    "prio": 10000
+  },
+  "R0_R1_R0": {
+    "action": "delete(fw-R0),add(fw-R1),delete(s1-R1),add(s1-R0),send(s3)",
+    "active": "true,false,true",
+    "match": "src=E,dst=I",
+    "prio": 1000000
+  },
+  "R1": {
+    "action": "delete(fw-R1),add(fw-R0),drop()",
+    "active": "false",
+    "match": "src=E,dst=I",
+    "prio": 50
+  }
+}

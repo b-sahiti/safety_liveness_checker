@@ -2,29 +2,29 @@
     "graph": [
         {
             "name": "Firewall",
-            "id": "fw1",
+            "id": "fw",
             "is_edge": true,
-            "rule_file": "./rules/Firewall_drop_all.txt",
+            "rule_file": "./rules/eventual_reachability/Firewall_EV.txt",
             "children_ids": [
-                "switch1",
-                "I"
+                "s1"
             ]
         },
         {
             "name":"Switch 1",
-            "id": "switch1",
+            "id": "s1",
             "is_edge": false,
-            "rule_file": "./rules/switch_1.txt",
+            "rule_file": "./rules/eventual_reachability/switch_1_EV.txt",
             "children_ids": [
-                "I"
+                "s2"
             ]
         },
         {
             "name":"Switch 2",
-            "id": "I",
+            "id": "s2",
             "is_edge": false,
-            "rule_file": "./rules/switch_2.txt",
+            "rule_file": "./rules/eventual_reachability/switch_2_EV.txt",
             "children_ids": [
+                "s3"
             ]
         }
     ]

@@ -2,25 +2,31 @@ import decompose.network_function as nf
 import decompose.topology as topo
 import re
 
+k = 2
 
-# prop: src=E;dst=I;drop()
+
+# prop: src=E,dst=I;drop()
 def global_drop(prop, topology):
     paths = list()
     dst_id = re.search('(?<=dst=)\w+', prop).group(0)
-    edge_devices_ids = list()
-    indegrees = set()
+    src_id = re.search('(?<=src=)\w+', prop).group(0)
+    src_ids = list()
 
-    for device_id in topology:
-        device = topology[device_id]
-        if device.is_edge:
-            edge_devices_ids.append(device_id)
+    if src_id == "E":
+        for device_id in topology:
+            device = topology[device_id]
+            if device.is_edge:
+                src_ids.append(device_id)
+    else:
+        src_ids.append(src_id)
 
-    for edge_id in edge_devices_ids:
-        curr_paths = topo.get_paths(topology, edge_id, dst_id)
+    for edge_id in src_ids:
+        curr_paths = topo.get_k_shortest_paths(topology, edge_id, dst_id, k)
         for path in curr_paths:
             paths.append(path)
 
     for path in paths:
+        dropping = False
         for device_id in path:
             dropping = False
             device = topology[device_id]

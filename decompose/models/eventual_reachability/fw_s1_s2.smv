@@ -1,0 +1,82 @@
+MODULE R0_R0(R0_R1_R0,R1)
+VAR
+	active1:boolean;
+	active2:boolean;
+ASSIGN
+	init(active1) := TRUE;
+	init(active2) := TRUE;
+	next(self.active1) := case
+		self.active1 & self.active2 : FALSE;
+		TRUE : self.active1;
+		esac;
+	next(R0_R1_R0.active1) := case
+		self.active1 & self.active2 : FALSE;
+		TRUE : R0_R1_R0.active1;
+		esac;
+	next(R1.active1) := case
+		self.active1 & self.active2 : TRUE;
+		TRUE : R1.active1;
+		esac;
+	next(self.active2) := case
+		self.active1 & self.active2 : FALSE;
+		TRUE : self.active2;
+		esac;
+	next(R0_R1_R0.active2) := case
+		self.active1 & self.active2 : TRUE;
+		TRUE : R0_R1_R0.active2;
+		esac;
+
+MODULE R0_R1_R0(R0_R0,R1)
+VAR
+	active1:boolean;
+	active2:boolean;
+	active3:boolean;
+ASSIGN
+	init(active1) := TRUE;
+	init(active2) := FALSE;
+	init(active3) := TRUE;
+	next(self.active1) := case
+		self.active1 & self.active2 & self.active3 : FALSE;
+		TRUE : self.active1;
+		esac;
+	next(R0_R0.active1) := case
+		self.active1 & self.active2 & self.active3 : FALSE;
+		TRUE : R0_R0.active1;
+		esac;
+	next(R1.active1) := case
+		self.active1 & self.active2 & self.active3 : TRUE;
+		TRUE : R1.active1;
+		esac;
+	next(self.active2) := case
+		self.active1 & self.active2 & self.active3 : FALSE;
+		TRUE : self.active2;
+		esac;
+	next(R0_R0.active2) := case
+		self.active1 & self.active2 & self.active3 : TRUE;
+		TRUE : R0_R0.active2;
+		esac;
+
+MODULE R1(R0_R0,R0_R1_R0)
+VAR
+	active1:boolean;
+ASSIGN
+	init(active1) := FALSE;
+	next(self.active1) := case
+		self.active1 : FALSE;
+		TRUE : self.active1;
+		esac;
+	next(R0_R0.active1) := case
+		self.active1 : TRUE;
+		TRUE : R0_R0.active1;
+		esac;
+	next(R0_R1_R0.active1) := case
+		self.active1 : TRUE;
+		TRUE : R0_R1_R0.active1;
+		esac;
+
+MODULE main
+VAR
+	R0_R0 : process R0_R0(R0_R1_R0,R1);
+	R0_R1_R0 : process R0_R1_R0(R0_R0,R1);
+	R1 : process R1(R0_R0,R0_R1_R0);
+LTLSPEC G (R0_R0.active1 = FALSE | R0_R0.active1 = TRUE)

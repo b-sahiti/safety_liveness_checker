@@ -13,13 +13,15 @@ def load_graph(f):
 
 
 # return list of paths; each path is a list of nwfunc ids
-def get_paths(graph, src_id, dst_id):
+def get_k_shortest_paths(graph, src_id, dst_id, k):
     paths = list()
     curr_path = [src_id]
     dfs(graph, src_id, dst_id, paths, curr_path, dict())
-    return paths
+    paths.sort(key=lambda x: len(x))
+    return paths[:k]
 
 
+# Note: can improve with dijkstra
 def dfs(graph, src_id, dst_id, paths, curr_path, visited):
     if src_id == dst_id:
         paths.append(curr_path.copy())

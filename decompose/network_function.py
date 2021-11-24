@@ -18,7 +18,7 @@ Example:
         {
             "name":"Switch 1",
             "id": "switch1",
-            "rule_file": "./switch_1.txt",
+            "rule_file": "./switch_1_EV.txt",
             "children_ids": [
             ]
         },
