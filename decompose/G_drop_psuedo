@@ -74,5 +74,25 @@ Internal: looks at k longest paths from src to dst and check for global drop
 External: looks at k longest paths from each edge to dst and check for global drop
 
 Eventual Reachability:
+Implemented eventual reachability check, which includes:
+1. Identifying k-shortest paths from each edge device to destination
+2. Generating smv model for each path
+3. Generating LTL formula for each path
+I also created an counterexample which shows that a naive decomposition won't work for eventual reachability:
 
+Firewall:
+rule active prio match action
+R0 true 100 src=E,dst=I delete(R0),add(R1),send(s1)
+R1 false 50 src=E,dst=I drop()
+
+Switch 1:
+rule active prio match action
+R0 true 100 src=E,dst=I delete(R0),add(R1),drop()
+R1 false 100 src=E,dst=I send(s2)
+
+In this example, both device would eventually forward the packet. However, the combination of them always drops the packet.
+
+A few limitations:
+1. Not tested on larger, more complex networks
+2. Haven't evaluate performance
 
