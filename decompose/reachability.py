@@ -39,7 +39,7 @@ def combined_table_to_smv(table, dst):
         var_num = len(rule["active"].split(","))
         smv += "("
         for j in range(var_num):
-            smv += rule_name + ".active" + str(i + 1) + " = TRUE"
+            smv += rule_name + ".active" + str(j + 1) + " = TRUE"
             if j < var_num - 1:
                 smv += " & "
         smv += ")"
@@ -74,12 +74,13 @@ def eventual_reachability(prop, topology):
         for device_id in path:
             devices.append(topology[device_id])
         combined_table = combine_all_devices(devices[:-1])
-        print(json.dumps(combined_table))
+        print(json.dumps(combined_table, indent=2))
         combined_smv = combined_table_to_smv(combined_table, dst_id)
         smv_file_name = utils.write_smv_to_file(combined_smv)
+        print(utils.run_nusmv_on_file(smv_file_name))
 
 
 if __name__ == '__main__':
     f = open("topo_sample.json")
     graph = topo.load_graph(f)
-    eventual_reachability("F(src=E,dst=s2;send(s2))", graph)
+    eventual_reachability("F(src=E,dst=s2;send(s3))", graph)
