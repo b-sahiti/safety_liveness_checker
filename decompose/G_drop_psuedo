@@ -66,7 +66,7 @@ Note:
 1. Find counterexample to prove tha decomposing eventuality is infeasible
 2. Only need to find k-shortest paths
 3. Only need to check k-shortest paths from src to dest for eventuality. If one of them work then eventuality is true. If src is outside of network,
-then treat each edge device as source and verify independently.
+then treat each edge device as source and verify independently. Join them with AND.
 
 Nov 22
 Global Drop: need to treat packets with internal and external sources differently.
@@ -96,3 +96,9 @@ A few limitations:
 1. Not tested on larger, more complex networks
 2. Haven't evaluate performance
 
+Nov 29
+TODO:
+1. Evaluate performance of eventual reachability on larger networks
+    a. Reduction in number of reachable states
+    b. Runtime performance
+2. Implement

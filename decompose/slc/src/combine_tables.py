@@ -47,7 +47,7 @@ def combTables(T1, T2, T1_name, T2_name):
             continue
 
         for k2 in T2.keys():
-            print(" Combining: \n T1[{}]: {} \n T2[{}]: {} ".format(k1, T1[k1], k2, T2[k2]))
+            # print(" Combining: \n T1[{}]: {} \n T2[{}]: {} ".format(k1, T1[k1], k2, T2[k2]))
             new_match = combMatch(T1[k1].match, T2[k2].match)
             new_action = combAction(T1[k1].action, T1_name, T2_name, T1_name)
             if new_action is None:

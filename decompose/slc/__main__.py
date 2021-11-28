@@ -2,10 +2,10 @@ import json
 from decompose.slc.src.utility import InputParser
 from decompose.slc.src.combine_tables import combTables
 if __name__ == "__main__":
-    fw=InputParser("../rules/eventual_reachability/Firewall_EV.txt")
-    s1 = InputParser("../rules/eventual_reachability/switch_1_EV.txt")
-    s2 = InputParser("../rules/eventual_reachability/switch_2_EV.txt")
-    order = ["fw", "s1", "s2"]
+    fw=InputParser("../rules/eventual_reachability/clos_firewall_1.txt")
+    s1 = InputParser("../rules/eventual_reachability/clos_spine_1.txt")
+    s2 = InputParser("../rules/eventual_reachability/clos_tor_1.txt")
+    order = ["fw", "sp1", "s1"]
     com=combTables(fw,s1,order[0],order[1])
     print("Combined fw s1\n")
     print(json.dumps(com, indent=4))

@@ -30,7 +30,7 @@ def combined_table_to_smv(table, dst):
         if rule_name == "order":
             continue
         action = table[rule_name]["action"]
-        if "send(" + dst + ")" in action:
+        if "send(" + dst + ")" in action or "send()" in action:
             rules_working.append(rule_name)
     smv = generate_smv.read_compound_table_as_dict(table)
     smv += "LTLSPEC F ("
@@ -65,7 +65,7 @@ def eventual_reachability(prop, topology):
         src_ids.append(src_id)
 
     for edge_id in src_ids:
-        curr_paths = topo.get_k_shortest_paths(topology, edge_id, dst_id, 1)
+        curr_paths = topo.get_k_shortest_paths(topology, edge_id, dst_id, 2)
         for path in curr_paths:
             paths.append(path)
 
@@ -81,6 +81,6 @@ def eventual_reachability(prop, topology):
 
 
 if __name__ == '__main__':
-    f = open("topo_sample.json")
+    f = open("topo_clos.json")
     graph = topo.load_graph(f)
-    eventual_reachability("F(src=E,dst=s2;send(s3))", graph)
+    eventual_reachability("F(src=E,dst=h1;send(h1))", graph)

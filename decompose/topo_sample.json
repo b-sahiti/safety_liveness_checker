@@ -4,7 +4,7 @@
             "name": "Firewall",
             "id": "fw",
             "is_edge": true,
-            "rule_file": "./rules/eventual_reachability/Firewall_EV.txt",
+            "rule_file": "./rules/eventual_reachability/Firewall_counter_example.txt",
             "children_ids": [
                 "s1"
             ]
@@ -13,7 +13,7 @@
             "name":"Switch 1",
             "id": "s1",
             "is_edge": false,
-            "rule_file": "./rules/eventual_reachability/switch_1_EV.txt",
+            "rule_file": "./rules/eventual_reachability/switch_1_counter_example.txt",
             "children_ids": [
                 "s2"
             ]
@@ -22,7 +22,7 @@
             "name":"Switch 2",
             "id": "s2",
             "is_edge": false,
-            "rule_file": "./rules/eventual_reachability/switch_2_EV.txt",
+            "rule_file": "./rules/eventual_reachability/switch_2_counter_example.txt",
             "children_ids": [
                 "s3"
             ]

@@ -1,0 +1,128 @@
+{
+    "graph": [
+        {
+            "name": "Firewall",
+            "id": "fw1",
+            "is_edge": true,
+            "rule_file": "./rules/eventual_reachability/clos_firewall_1.txt",
+            "children_ids": [
+                "sp1",
+                "sp2"
+            ]
+        },
+        {
+            "name": "Firewall",
+            "id": "fw2",
+            "is_edge": true,
+            "rule_file": "./rules/eventual_reachability/clos_firewall_2.txt",
+            "children_ids": [
+                "sp2",
+                "sp3"
+            ]
+        },
+        {
+            "name":"Spine1",
+            "id": "sp1",
+            "is_edge": false,
+            "rule_file": "./rules/eventual_reachability/clos_spine_1.txt",
+            "children_ids": [
+                "s1",
+                "s2",
+                "s3",
+                "s4"
+            ]
+        },
+        {
+            "name":"Spine2",
+            "id": "sp2",
+            "is_edge": false,
+            "rule_file": "./rules/eventual_reachability/clos_spine_2.txt",
+            "children_ids": [
+                "s1",
+                "s2",
+                "s3",
+                "s4"
+            ]
+        },
+        {
+            "name":"Spine3",
+            "id": "sp3",
+            "is_edge": false,
+            "rule_file": "./rules/eventual_reachability/clos_spine_3.txt",
+            "children_ids": [
+                "s1",
+                "s2",
+                "s3",
+                "s4"
+            ]
+        },
+        {
+            "name":"ToR1",
+            "id": "s1",
+            "is_edge": false,
+            "rule_file": "./rules/eventual_reachability/clos_tor_1.txt",
+            "children_ids": [
+                "h1"
+            ]
+        },
+        {
+            "name":"ToR2",
+            "id": "s2",
+            "is_edge": false,
+            "rule_file": "./rules/eventual_reachability/clos_tor_2.txt",
+            "children_ids": [
+                "h2"
+            ]
+        },
+        {
+            "name":"ToR3",
+            "id": "s3",
+            "is_edge": false,
+            "rule_file": "./rules/eventual_reachability/clos_tor_3.txt",
+            "children_ids": [
+                "h3"
+            ]
+        },
+        {
+            "name":"ToR4",
+            "id": "s4",
+            "is_edge": false,
+            "rule_file": "./rules/eventual_reachability/clos_tor_4.txt",
+            "children_ids": [
+                "h4"
+            ]
+        },
+        {
+            "name":"host1",
+            "id": "h1",
+            "is_edge": false,
+            "rule_file": "",
+            "children_ids": [
+            ]
+        },
+        {
+            "name":"host2",
+            "id": "h2",
+            "is_edge": false,
+            "rule_file": "",
+            "children_ids": [
+            ]
+        },
+        {
+            "name":"host3",
+            "id": "h3",
+            "is_edge": false,
+            "rule_file": "",
+            "children_ids": [
+            ]
+        },
+        {
+            "name":"host4",
+            "id": "h4",
+            "is_edge": false,
+            "rule_file": "",
+            "children_ids": [
+            ]
+        }
+    ]
+}
