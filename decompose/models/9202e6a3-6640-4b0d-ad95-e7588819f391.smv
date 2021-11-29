@@ -1,9 +1,0 @@
-MODULE R8()
-VAR
-	active1:boolean;
-ASSIGN
-	init(active1) := TRUE;
-MODULE main
-VAR
-	R8 : process R8();
-LTLSPEC F ((R8.active1 = TRUE))

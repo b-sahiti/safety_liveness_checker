@@ -101,4 +101,5 @@ TODO:
 1. Evaluate performance of eventual reachability on larger networks
     a. Reduction in number of reachable states
     b. Runtime performance
-2. Implement
+2. Implement If ... Then
+
