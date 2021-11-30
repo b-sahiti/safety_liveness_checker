@@ -25,7 +25,8 @@ def InputParser(input_file: str):
 class CustomVerifier: 
     def __init__(self, table): 
         self.num_rules = len(table.keys())
-        self.visited = [0] * (2**self.num_rules)
+        # self.visited = [0] * (2**self.num_rules)
+        self.visited = set()
         self.init_state = [1 if table[k].active == "true" else 0 for k in table.keys()]
         self.table = table
         # only keep add and delete in actions
@@ -37,7 +38,10 @@ class CustomVerifier:
             if new_actions: # not empty
                 new_actions = new_actions[:-1]
                 self.table[k]._replace(action = new_actions)
-                
+    
+    def get_num_rules(self): 
+        return self.num_rules
+
     # find mutable states
     def find_mutable(self): 
         mutable = [0] * self.num_rules
@@ -69,7 +73,7 @@ class CustomVerifier:
     # returns an array containing all possible states
     def explore_states(self): 
         # mark init state as visited
-        self.visited[self.state_to_decimal(self.init_state)]
+        self.visited.add(self.state_to_decimal(self.init_state))
         self.explore_child(self.init_state)
         return self.visited
 
@@ -90,10 +94,10 @@ class CustomVerifier:
                         child[target_idx] = 0
                 
                 # if visited, stop
-                if self.visited[self.state_to_decimal(child)]: 
+                if self.state_to_decimal(child) in self.visited: 
                     continue 
                 else:
-                    self.visited[self.state_to_decimal(child)] = 1
+                    self.visited.add(self.state_to_decimal(child))
                     self.explore_child(child)
 
     def state_to_decimal(self, state): 
@@ -109,15 +113,15 @@ class CustomVerifier:
     
 
 if __name__ == "__main__":
-    idps = InputParser("../data/idps.txt")
+    idps = InputParser("../data/sahiti_data_fw_idps/fw100.txt")
     start = time()
     verifier = CustomVerifier(idps)
     possible_states = verifier.explore_states()
     end = time()
     print("Time used: ", '{:.4f} ms'.format((end - start) * 1000))
-    num_all_states = len(possible_states)
-    print("All states (num={}):".format(num_all_states), possible_states)
-    num_visited_states = sum(possible_states)
+    num_all_states = 2**verifier.get_num_rules()
+    # print("All states (num={}):".format(num_all_states), possible_states)
+    num_visited_states = len(possible_states)
     print("Explored (num={}/{}={}%)".format(num_visited_states, num_all_states, num_visited_states / num_all_states * 100))
     for i, e in enumerate(possible_states): 
         if e == 1: # state visited
