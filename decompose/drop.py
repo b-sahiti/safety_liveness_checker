@@ -1,5 +1,4 @@
-import decompose.network_function as nf
-import decompose.topology as topo
+import topology as topo
 import re
 
 k = 2
@@ -23,7 +22,7 @@ def global_drop(prop, topology):
     for edge_id in src_ids:
         curr_paths = topo.get_k_shortest_paths(topology, edge_id, dst_id, k)
         for path in curr_paths:
-            paths.append(path)
+            paths.append(path[:-1])
 
     for path in paths:
         dropping = False
@@ -40,8 +39,6 @@ def global_drop(prop, topology):
 
 
 if __name__ == '__main__':
-    f = open("topo_sample.json")
+    f = open("topo_clos.json")
     graph = topo.load_graph(f)
-    print(global_drop("src=E,dst=I;drop()", graph))
-    paths = topo.get_paths(graph, "fw1", "switch2")
-    print(paths)
+    print(global_drop("src=E,dst=h1;drop()", graph))

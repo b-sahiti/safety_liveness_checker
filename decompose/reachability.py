@@ -2,7 +2,7 @@ import json
 
 from slc.src import combine_tables, utility, generate_smv
 import utils
-import decompose.topology as topo
+import topology as topo
 import re
 
 

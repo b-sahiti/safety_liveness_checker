@@ -1,5 +1,5 @@
 import argparse
-import decompose.slc.src.compound_rule_object as compound_rule_object
+import slc.src.compound_rule_object as compound_rule_object
 import json
 
 

@@ -48,7 +48,7 @@ class NetworkFunction:
         self.is_edge = is_edge
         self.children_ids = children_ids
         self.rule_file = rule_file
-        self.smv = smv
+        self.smv = "./models" + rule_file[7:-4] + ".smv"
 
     # TODO: verify the LTL property directly on the generated smv model
     def verify_property(self, property):
@@ -57,16 +57,15 @@ class NetworkFunction:
 
     # return false if device doesn't always drop packets with given condition
     def local_drop(self, match_condition):
-        self.smv = "./models/" + self.name + ".smv"
-        pysmvc.helper(rule_file=self.rule_file, prop=match_condition, smv_filename=self.smv)
+        # pysmvc.helper(rule_file=self.rule_file, prop=match_condition, smv_filename=self.smv)
         s = subprocess.run(["../NuSMV-2.6.0-win64/bin/NuSMV.exe", self.smv], stdout=subprocess.PIPE,
                            stderr=subprocess.PIPE)
-        res = re.search("(?<=\)\s\sis\s).*(?=\\r)", s.stdout.decode("utf-8")).group(0)
+        res = re.search("(\s\sis\s).*(?=\\r)", s.stdout.decode("utf-8")).group(0)
         if res is None:
             raise Exception("LTL result not found")
-        elif res == "false":
+        elif "false" in res:
             return False
-        elif res == "true":
+        elif "true" in res:
             return True
         else:
             raise Exception("unidentifiable LTL result")

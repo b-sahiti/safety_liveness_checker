@@ -1,0 +1,9 @@
+rule active prio match action
+R0 true 100 src=E,dst=h1 drop()
+R1 true 100 src=E,dst=h2 delete(R2),add(R3),send(sp1)
+R2 false 100 src=E,dst=h2 delete(R3),add(R2),send(sp2)
+R3 true 100 src=E,dst=h3 delete(R4),add(R5),send(sp1)
+R4 false 100 src=E,dst=h3 delete(R5),add(R4),send(sp2)
+R5 true 100 src=E,dst=h4 delete(R6),add(R7),send(sp1)
+R6 false 100 src=E,dst=h4 delete(R7),add(R6),send(sp2)
+R7 true 50 src=E,dst=* drop()

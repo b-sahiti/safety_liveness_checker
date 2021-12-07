@@ -4,7 +4,7 @@
             "name": "Firewall",
             "id": "fw1",
             "is_edge": true,
-            "rule_file": "./rules/eventual_reachability/clos_firewall_1.txt",
+            "rule_file": "./rules/eventual_reachability/clos_firewall_1_drop.txt",
             "children_ids": [
                 "sp1",
                 "sp2"
@@ -14,7 +14,7 @@
             "name": "Firewall",
             "id": "fw2",
             "is_edge": true,
-            "rule_file": "./rules/eventual_reachability/clos_firewall_2.txt",
+            "rule_file": "./rules/eventual_reachability/clos_firewall_2_drop.txt",
             "children_ids": [
                 "sp2",
                 "sp3"

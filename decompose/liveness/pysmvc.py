@@ -230,7 +230,7 @@ def helper(rule_file, prop, smv_filename):
 def main():
     rule_file = sys.argv[1]
     smv_filename = sys.argv[2]
-    helper(rule_file, "src=I,dst=blabla;drop()", smv_filename)
+    helper(rule_file, "src=E,dst=h1;drop()", smv_filename)
 
 
 if __name__ == "__main__":

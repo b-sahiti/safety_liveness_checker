@@ -24,7 +24,6 @@
             "is_edge": false,
             "rule_file": "./rules/eventual_reachability/switch_2_counter_example.txt",
             "children_ids": [
-                "s3"
             ]
         }
     ]

@@ -1,0 +1,15 @@
+MODULE R0(R7)
+VAR
+	active1:boolean;
+ASSIGN
+	init(active1) := TRUE;
+MODULE R7(R0)
+VAR
+	active1:boolean;
+ASSIGN
+	init(active1) := TRUE;
+MODULE main
+VAR
+	R0 : process R0(R7);
+	R7 : process R7(R0);
+LTLSPEC F ()

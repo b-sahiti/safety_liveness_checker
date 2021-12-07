@@ -1,0 +1,17 @@
+MODULE R0()
+VAR
+	active:boolean;
+ASSIGN
+	init(active) := TRUE;
+
+MODULE R1()
+VAR
+	active:boolean;
+ASSIGN
+	init(active) := TRUE;
+
+MODULE main
+VAR
+	r0 : process R0();
+	r1 : process R1();
+SPEC TRUE

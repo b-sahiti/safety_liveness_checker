@@ -1,0 +1,130 @@
+MODULE R0(r1)
+VAR
+	active:boolean;
+ASSIGN
+	init(active) := TRUE;
+	next(self.active) := case
+		self.active : FALSE;
+		TRUE : self.active;
+		esac;
+	next(r1.active) := case
+		self.active : TRUE;
+		TRUE : r1.active;
+		esac;
+
+MODULE R1(r0)
+VAR
+	active:boolean;
+ASSIGN
+	init(active):= FALSE;
+	next(self.active) := case
+		self.active : FALSE;
+		TRUE : self.active;
+		esac;
+	next(r0.active) := case
+		self.active : TRUE;
+		TRUE : r0.active;
+		esac;
+
+MODULE R2(r3)
+VAR
+	active:boolean;
+ASSIGN
+	init(active) := TRUE;
+	next(self.active) := case
+		self.active : FALSE;
+		TRUE : self.active;
+		esac;
+	next(r3.active) := case
+		self.active : TRUE;
+		TRUE : r3.active;
+		esac;
+
+MODULE R3(r2)
+VAR
+	active:boolean;
+ASSIGN
+	init(active):= FALSE;
+	next(self.active) := case
+		self.active : FALSE;
+		TRUE : self.active;
+		esac;
+	next(r2.active) := case
+		self.active : TRUE;
+		TRUE : r2.active;
+		esac;
+
+MODULE R4(r5)
+VAR
+	active:boolean;
+ASSIGN
+	init(active) := TRUE;
+	next(self.active) := case
+		self.active : FALSE;
+		TRUE : self.active;
+		esac;
+	next(r5.active) := case
+		self.active : TRUE;
+		TRUE : r5.active;
+		esac;
+
+MODULE R5(r4)
+VAR
+	active:boolean;
+ASSIGN
+	init(active):= FALSE;
+	next(self.active) := case
+		self.active : FALSE;
+		TRUE : self.active;
+		esac;
+	next(r4.active) := case
+		self.active : TRUE;
+		TRUE : r4.active;
+		esac;
+
+MODULE R6(r7)
+VAR
+	active:boolean;
+ASSIGN
+	init(active) := TRUE;
+	next(self.active) := case
+		self.active : FALSE;
+		TRUE : self.active;
+		esac;
+	next(r7.active) := case
+		self.active : TRUE;
+		TRUE : r7.active;
+		esac;
+
+MODULE R7(r6)
+VAR
+	active:boolean;
+ASSIGN
+	init(active):= FALSE;
+	next(self.active) := case
+		self.active : FALSE;
+		TRUE : self.active;
+		esac;
+	next(r6.active) := case
+		self.active : TRUE;
+		TRUE : r6.active;
+		esac;
+
+MODULE R8()
+VAR
+	active:boolean;
+ASSIGN
+	init(active) := TRUE;
+
+MODULE main
+VAR
+	r0 : process R0(r1);
+	r1 : process R1(r0);
+	r2 : process R2(r3);
+	r3 : process R3(r2);
+	r4 : process R4(r5);
+	r5 : process R5(r4);
+	r6 : process R6(r7);
+	r7 : process R7(r6);
+	r8 : process R8();
+SPEC !(r0.active=TRUE&TRUE)&!(r1.active=TRUE&TRUE)&TRUE

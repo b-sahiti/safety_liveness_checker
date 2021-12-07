@@ -1,5 +1,5 @@
-from decompose.slc.src.log_module import log
-from decompose.slc.src.utility import Rule
+from slc.src.log_module import log
+from slc.src.utility import Rule
 import re
 
 
@@ -63,6 +63,35 @@ def combTables(T1, T2, T1_name, T2_name):
                 merged_table[m_name] = Rule._make([''.join(m_active), m_prio, new_match, new_action])
                 log.debug(merged_table[m_name])
     return merged_table
+
+
+def combTables_simple(T1, T2, T1_name, T2_name):
+    merged_table = {}
+    for k1 in T1.keys():
+
+        for k2 in T2.keys():
+            # print(" Combining: \n T1[{}]: {} \n T2[{}]: {} ".format(k1, T1[k1], k2, T2[k2]))
+            new_match = combMatch(T1[k1].match, T2[k2].match)
+            new_action = T1[k1].action + combAction_simple(T2[k2].action, T1_name, T2_name, T2_name)
+
+            if new_match is not None and new_action is not None:
+                m_name = k1 + "_" + k2
+                m_active = [T1[k1].active, ',', T2[k2].active]
+                m_prio = int(T1[k1].prio) * int(T2[k2].prio)
+
+                merged_table[m_name] = Rule._make([''.join(m_active), m_prio, new_match, new_action])
+                log.debug(merged_table[m_name])
+    return merged_table
+
+
+def combAction_simple(actions, T1_name, T2_name, curr_name):
+    new_action = []
+    for act in actions.split(","):
+        new_action.append(act)
+        new_action.append(',')
+    if len(new_action) > 0:
+        new_action.pop()
+    return ''.join(new_action)
 
 
 def combAction(a1, T1_name, T2_name, curr_name):
