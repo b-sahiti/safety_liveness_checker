@@ -1,4 +1,4 @@
-import os, json
+import os, json, sys, argparse
 from collections import namedtuple
 from time import time
 
@@ -23,7 +23,7 @@ def InputParser(input_file: str):
     return Table
 
 class CustomVerifier: 
-    def __init__(self, table): 
+    def __init__(self, table, num_states, property, time, confidence): 
         self.num_rules = len(table.keys())
         # self.visited = [0] * (2**self.num_rules)
         self.visited = set()
@@ -38,6 +38,13 @@ class CustomVerifier:
             if new_actions: # not empty
                 new_actions = new_actions[:-1]
                 self.table[k]._replace(action = new_actions)
+
+        self.num_states = num_states
+        self.property = property
+        self.time = time if time > 0 else None
+        self.confidence = confidence if confidence > 0 else None
+        self.start_time = None 
+        self.end_time = None
     
     def get_num_rules(self): 
         return self.num_rules
@@ -71,13 +78,26 @@ class CustomVerifier:
                     
 
     # returns an array containing all possible states
-    def explore_states(self): 
+    def explore_states(self):
+        # start timer  
+        self.start_time = time()
         # mark init state as visited
         self.visited.add(self.state_to_decimal(self.init_state))
         self.explore_child(self.init_state)
         return self.visited
 
     def explore_child(self, cur_state): 
+        if self.time != None and (time() - self.start_time) >= self.time: 
+            print("time is up ", self.time, " s")
+            print("confidence level: ", len(self.visited) / self.num_states)
+            return False
+        if self.confidence != None and len(self.visited) / self.num_states >= self.confidence: 
+            print("reached confidence level ", self.confidence)
+            print("time spent ", (time() - self.start_time), " s")
+            return False
+        if self.table["R2"].active != "true":
+            print("property condition is not satisfied")
+            return False
         for i, e in enumerate(cur_state): 
             if e == 1: # rule is true
                 child = cur_state.copy()
@@ -98,7 +118,9 @@ class CustomVerifier:
                     continue 
                 else:
                     self.visited.add(self.state_to_decimal(child))
-                    self.explore_child(child)
+                    if not self.explore_child(child):
+                        return False
+        return True
 
     def state_to_decimal(self, state): 
         sum = 0
@@ -113,9 +135,22 @@ class CustomVerifier:
     
 
 if __name__ == "__main__":
-    idps = InputParser("../data/sahiti_data_fw_idps/fw100.txt")
+    # idps = InputParser("../../data/sahiti_data_fw_idps/fw10.txt")
+
+    # parse inputs
+    parser = argparse.ArgumentParser()
+    parser.add_argument("file", help="network table file", type=str)
+    parser.add_argument("num_states", help="total number of states", type=int)
+    parser.add_argument("property" ,help="choose from [ reachability]", type=str)
+    parser.add_argument("--time", nargs="?", help="time constraint in seconds", type=float, default=-1)
+    parser.add_argument("--confidence", nargs="?", help="confidence level", type=float, default=-1)
+    
+    args = parser.parse_args()
+
+    table = InputParser(args.file)
+
     start = time()
-    verifier = CustomVerifier(idps)
+    verifier = CustomVerifier(table, args.num_states, args.property, args.time, args.confidence)
     possible_states = verifier.explore_states()
     end = time()
     print("Time used: ", '{:.4f} ms'.format((end - start) * 1000))
