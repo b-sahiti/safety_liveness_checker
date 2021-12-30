@@ -59,6 +59,9 @@ Verify with Model Checkers (NuSMV and SPIN)
 
 Step - 1 : Both NuSMV and SPIN will need take property of text format (e.g., src=I;send()) and will first need to express it in terms of rules
 
+        from top level; python -m slc (function used is prop_gen)
+        - Can generate for any table (Individual or compound)
+
 Step - 2: Then the rule need to be in standard LTL format
 
 Step - 3: Property format needed for Model Checkers 
