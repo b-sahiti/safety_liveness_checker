@@ -1,9 +1,13 @@
 # safety_liveness_checker
 
 Work Flow:
+
 Generate Tables
+
 Express tables as State Machines
+
 Express Property
+
 Verify with Model Checkers (NuSMV and SPIN)
 
 1. Individual NF table generation
