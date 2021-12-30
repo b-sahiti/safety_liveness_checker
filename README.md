@@ -10,6 +10,9 @@ Express Property
 
 Verify with Model Checkers (NuSMV and SPIN)
 
+
+===============================================================================================================
+
 1. Individual NF table generation
 
     In slc/data/ there are generator script. It can generate tables of desired sizes.
