@@ -2,6 +2,7 @@ import os, json
 from slc.src.utility import InputParser
 from slc.src.combine_tables import combTables
 import time
+from slc.src.property_generator import *
 
 
 def data_generation_fw_idps():
@@ -14,5 +15,8 @@ def data_generation_fw_idps():
         print(f"fw{len(fw)} idps{len(idps)} fw_idps{len(fw_idps)} {(end-start)*1000} milliseconds")
 
 if __name__ == "__main__":
-   data_generation_fw_idps() 
+   #data_generation_fw_idps()
     
+    fw = InputParser("slc/data/firewalls.txt")
+    #print(indTables(fw,"src=E;drop"))
+    print(compoundTableConverter('slc/data/fw_IDPS',"src=I;drop"))
