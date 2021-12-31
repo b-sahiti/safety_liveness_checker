@@ -21,7 +21,7 @@ def indTables(T,prop):
         rowDict[num] = key
         num = num+1
 
-    print(rowDict)
+    #print(rowDict)
 
     res = []
 
@@ -61,7 +61,8 @@ def checkRule(T,curr,currres,res,match,action,rowDict):
             currres.append(rowDict[curr])
             currres.append("=")
             currres.append("FALSE")
-            currres.append("^")
+            #currres.append("^")
+            currres.append("&")
             checkRule(T, curr + 1, currres, res, match, action, rowDict)
             currres = currres[:-4]
         elif action == "drop" and curr == len(rowDict)-1 and "send" in T[rowDict[curr]].action:
@@ -79,7 +80,8 @@ def checkRule(T,curr,currres,res,match,action,rowDict):
             currres.append(rowDict[curr])
             currres.append("=")
             currres.append("FALSE")
-            currres.append("^")
+            #currres.append("^")
+            currres.append("&")
             checkRule(T, curr + 1, currres, res, match, action, rowDict)
             currres = currres[:-4]
 

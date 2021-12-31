@@ -8,9 +8,11 @@ from slc.src.individual_smv import read_individual_table
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--combine', action='store', type=int,default=0)
-parser.add_argument('--prop', action='store', type=int,default=0)
+parser.add_argument('--compound_prop', action='store', type=int,default=0)
 parser.add_argument('--ind_smv', action='store', type=int,default=0)
+parser.add_argument('--ind_prop', action='store', type=int,default=0)
 parser.add_argument('--input_file', dest="input_file")
+parser.add_argument('--property', dest="property")
 parser.add_argument('--output_smv_file', dest="output_smv_file")
 
 args=parser.parse_args()
@@ -28,9 +30,11 @@ def data_generation_fw_idps():
 if __name__ == "__main__":
     if(args.combine):
         data_generation_fw_idps()
-    if(args.prop):
-        fw = InputParser("slc/data/firewalls.txt")
-        print(indTables(fw,"src=E;drop"))
+    if(args.ind_prop):
+        print(args.property)
+        t = InputParser(args.input_file)
+        print(indTables(t,args.property))
+    if(args.compound_prop):
         print(compoundTableConverter('slc/data/fw_IDPS',"src=I;drop"))
     if(args.ind_smv):
         if (args.input_file):

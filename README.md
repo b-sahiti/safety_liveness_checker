@@ -35,10 +35,19 @@ Verify with Model Checkers (NuSMV and SPIN)
 3. Generate individual NF State Machines.
 
 3.1 For NuSMV
+        Pranav repo: Original SMV generator but has bug, reachable states error (more than correct)
 
-        Go to slc/src/original_liveness/
+            Go to slc/src/original_liveness/
 
-        Run python pysmvc.py InividualTableFile PropertyFile
+            Run python pysmvc.py InividualTableFile PropertyFile
+
+        New: 
+            From top level directory.
+            
+            python -m slc --ind_smv=1 --input_file <absolute path from slc folder>  --output_smv_file  <absolute path from slc folder>
+
+            E.g. : python -m slc --ind_smv=1 --input_file slc/data/sahiti_data_fw_idps/fw5.txt --output_smv_file slc/data/smv_files/fw5.smv
+
 
 3.2 For SPIN
 
