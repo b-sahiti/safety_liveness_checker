@@ -73,8 +73,11 @@ Verify with Model Checkers (NuSMV and SPIN)
 
 Step - 1 : Both NuSMV and SPIN will need take property of text format (e.g., src=I;send()) and will first need to express it in terms of rules
 
-        from top level; python -m slc (function used is prop_gen)
-        - Can generate for any table (Individual or compound)
+        For Individual Tables: 
+
+            E.g., python -m slc --ind_prop=1 --input_file slc/data/sahiti_data_fw_idps/fw5.txt --property="src=1000;send()"
+
+
 
 Step - 2: Then the rule need to be in standard LTL format
 
@@ -86,7 +89,9 @@ Step - 3: Property format needed for Model Checkers
 
 5.2 With SPIN
 
-    In spot transform ltl to neverclaim, the format needed for SPIN 
+    Can consume raw ltl
+
+    But for decomposer, in spot transform ltl to BA, split two BAs, BA to neverclaims, the format needed for SPIN 
 
 
 Note : Decomposer also takes Step 2 LTL as input, decomposes and generates neverclaims from SPOT, so they can be used in SPIN.
