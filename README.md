@@ -35,6 +35,7 @@ Verify with Model Checkers (NuSMV and SPIN)
 3. Generate individual NF State Machines.
 
 3.1 For NuSMV
+        
         Pranav repo: Original SMV generator but has bug, reachable states error (more than correct)
 
             Go to slc/src/original_liveness/

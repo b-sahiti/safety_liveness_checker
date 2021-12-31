@@ -9,9 +9,11 @@ FW-IPDS-monitor-rateLimiter
     1.4 Conditinal Reachability: : Response
 
    This property can be per NF or over a set of NF.
-   Eg:  
+   Specification Generation: Find reachability in terms of rules and the add appropriate G or F 
 2. Waypointing
-    2.1 Presence : Global (Eg: Throgh a node)
+    2.1 Presence : Global (Eg: Through a node)
     2.2 Absence : Global (Eg: Never throgh a node)
 3. Modification:
-    3.1 After: 
+    3.1 After: p -> q
+        If src=E is whitelisted then it can reach 
+        Specification Generation:  Maybe CTL is better ??? - TODO
