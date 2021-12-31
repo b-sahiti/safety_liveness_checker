@@ -46,7 +46,8 @@ def main():
 	prop=propf.read()
 	pop=prop.split(";")
 	f = open(g,"r")
-	b = open("myfile.smv","w")
+	tablename=sys.argv[1].split(".")[0]
+	b = open(tablename+".smv","w")
 	lines = f.readlines()
 	r = [ ]
 	sol=[]

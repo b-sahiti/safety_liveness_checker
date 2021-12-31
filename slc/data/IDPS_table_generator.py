@@ -4,7 +4,7 @@ def main():
 
     cval=0          #initialize counter value
     interval=2     # counter interval 
-    count = int(sys.argv[1])            # takes user count 
+    count = int(sys.argv[1])            # takes user count (Should be multiple of 4) 
     source=1000
     dst=100
     file_dst=200
@@ -18,7 +18,7 @@ def main():
         print("R{0} true 40 dst={1},port={2} add(R{3}),send()".format(i+3,source,port_num,i+2))
         source=source+1
     
-    print("R{0} true 1 * send()".format(i))
+    print("R{0} true 1 * send()".format(count))
 
 
 if __name__ == "__main__":

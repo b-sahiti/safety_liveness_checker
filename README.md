@@ -17,15 +17,20 @@ Verify with Model Checkers (NuSMV and SPIN)
 
     In slc/data/ there are generator script. It can generate tables of desired sizes.
     Each will have final rule * with default action and priority 1.
-    These in turn are input for generating combined tables also
+    These in turn are input for generating combined tables also.
+
+    For IDPS Tables : python IDPS_table_generator.py <rules count in multiples of 4> > sahiti_data_fw_idps/idps.txt
+
+    For FW (firewalls) Table python Firewall_table_generator.py <count in multiples of 5> > sahiti_data_fw_idps/fw.txt
+                        
 
 2. Combine tables Generator
 
-    From top level run python -m slc (function used is data_generation_fw_idps)
+    From top level run python -m slc --combine=1
 
     It saves combined table to slc/data/<individaul tables folder>/<indiviualsize>/table1_table2
 
-    Generation times needed will be printed
+    Generation times and table sizes will be printed.
 
 3. Generate individual NF State Machines.
 
@@ -98,6 +103,10 @@ Note : Decomposer also takes Step 2 LTL as input, decomposes and generates never
         check_ltlspec -p "<property_from_step2 of 5>"
 
         compute_reachable [-h]
+
+        print_reachable_states -v
+
+
 
 6.2 SPIN
 

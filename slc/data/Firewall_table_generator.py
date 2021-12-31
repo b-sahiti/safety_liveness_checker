@@ -4,7 +4,7 @@ def main():
 
     cval=0          #initialize counter value
     interval=2     # counter interval 
-    count = int(sys.argv[1])            # takes user count 
+    count = int(sys.argv[1])            # takes user count (should be multiple of 5) 
     source=1000
     dst=100
     print("rule active prio match action")
@@ -17,7 +17,7 @@ def main():
         print("R{0} true 50 src={1},dst={2} send(IDPS)".format(i+4,dst,source))
         source=source+1
     #* rule
-    print("R{0} true 1 * send()".format(i))
+    print("R{0} true 1 * send(IDPS)".format(count))
     
 
 

@@ -1,8 +1,19 @@
-import os, json
+import os, json, argparse
 from slc.src.utility import InputParser
 from slc.src.combine_tables import combTables
 import time
 from slc.src.property_generator import *
+from slc.src.individual_smv import read_individual_table
+
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--combine', action='store', type=int,default=0)
+parser.add_argument('--prop', action='store', type=int,default=0)
+parser.add_argument('--ind_smv', action='store', type=int,default=0)
+parser.add_argument('--input_file', dest="input_file")
+parser.add_argument('--output_smv_file', dest="output_smv_file")
+
+args=parser.parse_args()
 
 
 def data_generation_fw_idps():
@@ -15,8 +26,15 @@ def data_generation_fw_idps():
         print(f"fw{len(fw)} idps{len(idps)} fw_idps{len(fw_idps)} {(end-start)*1000} milliseconds")
 
 if __name__ == "__main__":
-   #data_generation_fw_idps()
+    if(args.combine):
+        data_generation_fw_idps()
+    if(args.prop):
+        fw = InputParser("slc/data/firewalls.txt")
+        print(indTables(fw,"src=E;drop"))
+        print(compoundTableConverter('slc/data/fw_IDPS',"src=I;drop"))
+    if(args.ind_smv):
+        if (args.input_file):
+            print(args.output_smv_file)
+            #read_individual_table('slc/data/sahiti_data_fw_idps/fw5.txt')
+            read_individual_table(args.input_file,args.output_smv_file)
     
-    fw = InputParser("slc/data/firewalls.txt")
-    #print(indTables(fw,"src=E;drop"))
-    print(compoundTableConverter('slc/data/fw_IDPS',"src=I;drop"))

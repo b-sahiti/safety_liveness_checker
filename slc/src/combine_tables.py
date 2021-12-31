@@ -39,10 +39,11 @@ def combTables(T1,T2,T1_name,T2_name):
 
     for k in merged_table.keys():
         comres[k] = merged_table[k]._asdict() 
-    path="slc/data/sahiti_data_fw_idps/"+str(len(T1))+"/"
+    path="slc/data/sahiti_data_fw_idps/"+str(len(T1)-1)+"/"
     if not os.path.exists(path):
         os.makedirs(path)
     json.dump(comres,open(path+T1_name+"_"+T2_name,'w'),indent=4)
+    #print(json.dumps(comres,indent=4))
     return merged_table
 
 def combAction(a1,T1_name,T2_name,curr_name):

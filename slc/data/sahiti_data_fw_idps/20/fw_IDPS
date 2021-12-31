@@ -11,27 +11,9 @@
         "match": "src=1000,dst=100",
         "action": "delete(fw-R0),delete(fw-R1),delete(fw-R3),add(IDPS-R0),drop()"
     },
-    "R0_R4": {
+    "R0_R20": {
         "active": "true,true",
-        "prio": 1000,
-        "match": "src=1000,dst=100",
-        "action": "delete(fw-R0),delete(fw-R1),delete(fw-R3),send()"
-    },
-    "R0_R9": {
-        "active": "true,true",
-        "prio": 1000,
-        "match": "src=1000,dst=100",
-        "action": "delete(fw-R0),delete(fw-R1),delete(fw-R3),send()"
-    },
-    "R0_R14": {
-        "active": "true,true",
-        "prio": 1000,
-        "match": "src=1000,dst=100",
-        "action": "delete(fw-R0),delete(fw-R1),delete(fw-R3),send()"
-    },
-    "R0_R19": {
-        "active": "true,true",
-        "prio": 1000,
+        "prio": 100,
         "match": "src=1000,dst=100",
         "action": "delete(fw-R0),delete(fw-R1),delete(fw-R3),send()"
     },
@@ -43,109 +25,55 @@
     },
     "R2_R0": {
         "active": "true,false",
-        "prio": 10000,
+        "prio": 5000,
         "match": "src=1000,dst=100",
         "action": "drop()"
     },
     "R2_R1": {
         "active": "true,false",
-        "prio": 5000,
+        "prio": 2500,
         "match": "src=1000,dst=100",
         "action": "add(IDPS-R0),drop()"
     },
-    "R2_R4": {
+    "R2_R20": {
         "active": "true,true",
-        "prio": 1000,
-        "match": "src=1000,dst=100",
-        "action": "send()"
-    },
-    "R2_R9": {
-        "active": "true,true",
-        "prio": 1000,
-        "match": "src=1000,dst=100",
-        "action": "send()"
-    },
-    "R2_R14": {
-        "active": "true,true",
-        "prio": 1000,
-        "match": "src=1000,dst=100",
-        "action": "send()"
-    },
-    "R2_R19": {
-        "active": "true,true",
-        "prio": 1000,
+        "prio": 50,
         "match": "src=1000,dst=100",
         "action": "send()"
     },
     "R3": {
         "active": "true",
-        "prio": 100,
+        "prio": 50,
         "match": "src=100,dst=1000",
         "action": "drop()"
     },
     "R4_R3": {
         "active": "true,true",
-        "prio": 4000,
+        "prio": 2000,
         "match": "src=100,dst=1000,port=2222",
         "action": "add(IDPS-R2),send()"
     },
-    "R4_R4": {
+    "R4_R20": {
         "active": "true,true",
-        "prio": 1000,
-        "match": "src=100,dst=1000",
-        "action": "send()"
-    },
-    "R4_R9": {
-        "active": "true,true",
-        "prio": 1000,
-        "match": "src=100,dst=1000",
-        "action": "send()"
-    },
-    "R4_R14": {
-        "active": "true,true",
-        "prio": 1000,
-        "match": "src=100,dst=1000",
-        "action": "send()"
-    },
-    "R4_R19": {
-        "active": "true,true",
-        "prio": 1000,
+        "prio": 50,
         "match": "src=100,dst=1000",
         "action": "send()"
     },
     "R5_R4": {
-        "active": "true,true",
-        "prio": 1000,
-        "match": "src=1001,dst=100",
-        "action": "delete(fw-R5),delete(fw-R6),delete(fw-R8),send()"
-    },
-    "R5_R5": {
         "active": "true,false",
         "prio": 10000,
         "match": "src=1001,dst=100",
         "action": "delete(fw-R5),delete(fw-R6),delete(fw-R8),drop()"
     },
-    "R5_R6": {
+    "R5_R5": {
         "active": "true,false",
         "prio": 5000,
         "match": "src=1001,dst=100",
-        "action": "delete(fw-R5),delete(fw-R6),delete(fw-R8),add(IDPS-R5),drop()"
+        "action": "delete(fw-R5),delete(fw-R6),delete(fw-R8),add(IDPS-R4),drop()"
     },
-    "R5_R9": {
+    "R5_R20": {
         "active": "true,true",
-        "prio": 1000,
-        "match": "src=1001,dst=100",
-        "action": "delete(fw-R5),delete(fw-R6),delete(fw-R8),send()"
-    },
-    "R5_R14": {
-        "active": "true,true",
-        "prio": 1000,
-        "match": "src=1001,dst=100",
-        "action": "delete(fw-R5),delete(fw-R6),delete(fw-R8),send()"
-    },
-    "R5_R19": {
-        "active": "true,true",
-        "prio": 1000,
+        "prio": 100,
         "match": "src=1001,dst=100",
         "action": "delete(fw-R5),delete(fw-R6),delete(fw-R8),send()"
     },
@@ -156,110 +84,56 @@
         "action": "delete(R5),delete(R6),delete(R9),drop()"
     },
     "R7_R4": {
-        "active": "true,true",
-        "prio": 1000,
-        "match": "src=1001,dst=100",
-        "action": "send()"
-    },
-    "R7_R5": {
-        "active": "true,false",
-        "prio": 10000,
-        "match": "src=1001,dst=100",
-        "action": "drop()"
-    },
-    "R7_R6": {
         "active": "true,false",
         "prio": 5000,
         "match": "src=1001,dst=100",
-        "action": "add(IDPS-R5),drop()"
+        "action": "drop()"
     },
-    "R7_R9": {
-        "active": "true,true",
-        "prio": 1000,
+    "R7_R5": {
+        "active": "true,false",
+        "prio": 2500,
         "match": "src=1001,dst=100",
-        "action": "send()"
+        "action": "add(IDPS-R4),drop()"
     },
-    "R7_R14": {
+    "R7_R20": {
         "active": "true,true",
-        "prio": 1000,
-        "match": "src=1001,dst=100",
-        "action": "send()"
-    },
-    "R7_R19": {
-        "active": "true,true",
-        "prio": 1000,
+        "prio": 50,
         "match": "src=1001,dst=100",
         "action": "send()"
     },
     "R8": {
         "active": "true",
-        "prio": 100,
+        "prio": 50,
         "match": "src=100,dst=1001",
         "action": "drop()"
     },
-    "R9_R4": {
+    "R9_R7": {
         "active": "true,true",
-        "prio": 1000,
-        "match": "src=100,dst=1001",
-        "action": "send()"
-    },
-    "R9_R8": {
-        "active": "true,true",
-        "prio": 4000,
+        "prio": 2000,
         "match": "src=100,dst=1001,port=2222",
-        "action": "add(IDPS-R7),send()"
+        "action": "add(IDPS-R6),send()"
     },
-    "R9_R9": {
+    "R9_R20": {
         "active": "true,true",
-        "prio": 1000,
+        "prio": 50,
         "match": "src=100,dst=1001",
         "action": "send()"
     },
-    "R9_R14": {
-        "active": "true,true",
-        "prio": 1000,
-        "match": "src=100,dst=1001",
-        "action": "send()"
-    },
-    "R9_R19": {
-        "active": "true,true",
-        "prio": 1000,
-        "match": "src=100,dst=1001",
-        "action": "send()"
-    },
-    "R10_R4": {
-        "active": "true,true",
-        "prio": 1000,
-        "match": "src=1002,dst=100",
-        "action": "delete(fw-R10),delete(fw-R11),delete(fw-R13),send()"
-    },
-    "R10_R9": {
-        "active": "true,true",
-        "prio": 1000,
-        "match": "src=1002,dst=100",
-        "action": "delete(fw-R10),delete(fw-R11),delete(fw-R13),send()"
-    },
-    "R10_R10": {
+    "R10_R8": {
         "active": "true,false",
         "prio": 10000,
         "match": "src=1002,dst=100",
         "action": "delete(fw-R10),delete(fw-R11),delete(fw-R13),drop()"
     },
-    "R10_R11": {
+    "R10_R9": {
         "active": "true,false",
         "prio": 5000,
         "match": "src=1002,dst=100",
-        "action": "delete(fw-R10),delete(fw-R11),delete(fw-R13),add(IDPS-R10),drop()"
+        "action": "delete(fw-R10),delete(fw-R11),delete(fw-R13),add(IDPS-R8),drop()"
     },
-    "R10_R14": {
+    "R10_R20": {
         "active": "true,true",
-        "prio": 1000,
-        "match": "src=1002,dst=100",
-        "action": "delete(fw-R10),delete(fw-R11),delete(fw-R13),send()"
-    },
-    "R10_R19": {
-        "active": "true,true",
-        "prio": 1000,
+        "prio": 100,
         "match": "src=1002,dst=100",
         "action": "delete(fw-R10),delete(fw-R11),delete(fw-R13),send()"
     },
@@ -269,111 +143,57 @@
         "match": "src=100,dst=1002",
         "action": "delete(R10),delete(R11),delete(R14),drop()"
     },
-    "R12_R4": {
-        "active": "true,true",
-        "prio": 1000,
-        "match": "src=1002,dst=100",
-        "action": "send()"
-    },
-    "R12_R9": {
-        "active": "true,true",
-        "prio": 1000,
-        "match": "src=1002,dst=100",
-        "action": "send()"
-    },
-    "R12_R10": {
-        "active": "true,false",
-        "prio": 10000,
-        "match": "src=1002,dst=100",
-        "action": "drop()"
-    },
-    "R12_R11": {
+    "R12_R8": {
         "active": "true,false",
         "prio": 5000,
         "match": "src=1002,dst=100",
-        "action": "add(IDPS-R10),drop()"
+        "action": "drop()"
     },
-    "R12_R14": {
-        "active": "true,true",
-        "prio": 1000,
+    "R12_R9": {
+        "active": "true,false",
+        "prio": 2500,
         "match": "src=1002,dst=100",
-        "action": "send()"
+        "action": "add(IDPS-R8),drop()"
     },
-    "R12_R19": {
+    "R12_R20": {
         "active": "true,true",
-        "prio": 1000,
+        "prio": 50,
         "match": "src=1002,dst=100",
         "action": "send()"
     },
     "R13": {
         "active": "true",
-        "prio": 100,
+        "prio": 50,
         "match": "src=100,dst=1002",
         "action": "drop()"
     },
-    "R14_R4": {
+    "R14_R11": {
         "active": "true,true",
-        "prio": 1000,
-        "match": "src=100,dst=1002",
-        "action": "send()"
-    },
-    "R14_R9": {
-        "active": "true,true",
-        "prio": 1000,
-        "match": "src=100,dst=1002",
-        "action": "send()"
-    },
-    "R14_R13": {
-        "active": "true,true",
-        "prio": 4000,
+        "prio": 2000,
         "match": "src=100,dst=1002,port=2222",
-        "action": "add(IDPS-R12),send()"
+        "action": "add(IDPS-R10),send()"
     },
-    "R14_R14": {
+    "R14_R20": {
         "active": "true,true",
-        "prio": 1000,
+        "prio": 50,
         "match": "src=100,dst=1002",
         "action": "send()"
     },
-    "R14_R19": {
-        "active": "true,true",
-        "prio": 1000,
-        "match": "src=100,dst=1002",
-        "action": "send()"
-    },
-    "R15_R4": {
-        "active": "true,true",
-        "prio": 1000,
-        "match": "src=1003,dst=100",
-        "action": "delete(fw-R15),delete(fw-R16),delete(fw-R18),send()"
-    },
-    "R15_R9": {
-        "active": "true,true",
-        "prio": 1000,
-        "match": "src=1003,dst=100",
-        "action": "delete(fw-R15),delete(fw-R16),delete(fw-R18),send()"
-    },
-    "R15_R14": {
-        "active": "true,true",
-        "prio": 1000,
-        "match": "src=1003,dst=100",
-        "action": "delete(fw-R15),delete(fw-R16),delete(fw-R18),send()"
-    },
-    "R15_R15": {
+    "R15_R12": {
         "active": "true,false",
         "prio": 10000,
         "match": "src=1003,dst=100",
         "action": "delete(fw-R15),delete(fw-R16),delete(fw-R18),drop()"
     },
-    "R15_R16": {
+    "R15_R13": {
         "active": "true,false",
         "prio": 5000,
         "match": "src=1003,dst=100",
-        "action": "delete(fw-R15),delete(fw-R16),delete(fw-R18),add(IDPS-R15),drop()"
+        "action": "delete(fw-R15),delete(fw-R16),delete(fw-R18),add(IDPS-R12),drop()"
     },
-    "R15_R19": {
+    "R15_R20": {
         "active": "true,true",
-        "prio": 1000,
+        "prio": 100,
         "match": "src=1003,dst=100",
         "action": "delete(fw-R15),delete(fw-R16),delete(fw-R18),send()"
     },
@@ -383,76 +203,166 @@
         "match": "src=100,dst=1003",
         "action": "delete(R15),delete(R16),delete(R19),drop()"
     },
-    "R17_R4": {
-        "active": "true,true",
-        "prio": 1000,
-        "match": "src=1003,dst=100",
-        "action": "send()"
-    },
-    "R17_R9": {
-        "active": "true,true",
-        "prio": 1000,
-        "match": "src=1003,dst=100",
-        "action": "send()"
-    },
-    "R17_R14": {
-        "active": "true,true",
-        "prio": 1000,
-        "match": "src=1003,dst=100",
-        "action": "send()"
-    },
-    "R17_R15": {
-        "active": "true,false",
-        "prio": 10000,
-        "match": "src=1003,dst=100",
-        "action": "drop()"
-    },
-    "R17_R16": {
+    "R17_R12": {
         "active": "true,false",
         "prio": 5000,
         "match": "src=1003,dst=100",
-        "action": "add(IDPS-R15),drop()"
+        "action": "drop()"
     },
-    "R17_R19": {
+    "R17_R13": {
+        "active": "true,false",
+        "prio": 2500,
+        "match": "src=1003,dst=100",
+        "action": "add(IDPS-R12),drop()"
+    },
+    "R17_R20": {
         "active": "true,true",
-        "prio": 1000,
+        "prio": 50,
         "match": "src=1003,dst=100",
         "action": "send()"
     },
     "R18": {
         "active": "true",
-        "prio": 100,
+        "prio": 50,
         "match": "src=100,dst=1003",
         "action": "drop()"
     },
-    "R19_R4": {
+    "R19_R15": {
         "active": "true,true",
-        "prio": 1000,
-        "match": "src=100,dst=1003",
-        "action": "send()"
-    },
-    "R19_R9": {
-        "active": "true,true",
-        "prio": 1000,
-        "match": "src=100,dst=1003",
-        "action": "send()"
-    },
-    "R19_R14": {
-        "active": "true,true",
-        "prio": 1000,
-        "match": "src=100,dst=1003",
-        "action": "send()"
-    },
-    "R19_R18": {
-        "active": "true,true",
-        "prio": 4000,
+        "prio": 2000,
         "match": "src=100,dst=1003,port=2222",
+        "action": "add(IDPS-R14),send()"
+    },
+    "R19_R20": {
+        "active": "true,true",
+        "prio": 50,
+        "match": "src=100,dst=1003",
+        "action": "send()"
+    },
+    "R20_R0": {
+        "active": "true,false",
+        "prio": 100,
+        "match": "src=1000",
+        "action": "drop()"
+    },
+    "R20_R1": {
+        "active": "true,false",
+        "prio": 50,
+        "match": "src=1000,dst=100",
+        "action": "add(IDPS-R0),drop()"
+    },
+    "R20_R2": {
+        "active": "true,false",
+        "prio": 50,
+        "match": "src=1000,dst=200",
+        "action": "add(IDPS-R1),send()"
+    },
+    "R20_R3": {
+        "active": "true,true",
+        "prio": 40,
+        "match": "dst=1000,port=2222",
+        "action": "add(IDPS-R2),send()"
+    },
+    "R20_R4": {
+        "active": "true,false",
+        "prio": 100,
+        "match": "src=1001",
+        "action": "drop()"
+    },
+    "R20_R5": {
+        "active": "true,false",
+        "prio": 50,
+        "match": "src=1001,dst=100",
+        "action": "add(IDPS-R4),drop()"
+    },
+    "R20_R6": {
+        "active": "true,false",
+        "prio": 50,
+        "match": "src=1001,dst=200",
+        "action": "add(IDPS-R5),send()"
+    },
+    "R20_R7": {
+        "active": "true,true",
+        "prio": 40,
+        "match": "dst=1001,port=2222",
+        "action": "add(IDPS-R6),send()"
+    },
+    "R20_R8": {
+        "active": "true,false",
+        "prio": 100,
+        "match": "src=1002",
+        "action": "drop()"
+    },
+    "R20_R9": {
+        "active": "true,false",
+        "prio": 50,
+        "match": "src=1002,dst=100",
+        "action": "add(IDPS-R8),drop()"
+    },
+    "R20_R10": {
+        "active": "true,false",
+        "prio": 50,
+        "match": "src=1002,dst=200",
+        "action": "add(IDPS-R9),send()"
+    },
+    "R20_R11": {
+        "active": "true,true",
+        "prio": 40,
+        "match": "dst=1002,port=2222",
+        "action": "add(IDPS-R10),send()"
+    },
+    "R20_R12": {
+        "active": "true,false",
+        "prio": 100,
+        "match": "src=1003",
+        "action": "drop()"
+    },
+    "R20_R13": {
+        "active": "true,false",
+        "prio": 50,
+        "match": "src=1003,dst=100",
+        "action": "add(IDPS-R12),drop()"
+    },
+    "R20_R14": {
+        "active": "true,false",
+        "prio": 50,
+        "match": "src=1003,dst=200",
+        "action": "add(IDPS-R13),send()"
+    },
+    "R20_R15": {
+        "active": "true,true",
+        "prio": 40,
+        "match": "dst=1003,port=2222",
+        "action": "add(IDPS-R14),send()"
+    },
+    "R20_R16": {
+        "active": "true,false",
+        "prio": 100,
+        "match": "src=1004",
+        "action": "drop()"
+    },
+    "R20_R17": {
+        "active": "true,false",
+        "prio": 50,
+        "match": "src=1004,dst=100",
+        "action": "add(IDPS-R16),drop()"
+    },
+    "R20_R18": {
+        "active": "true,false",
+        "prio": 50,
+        "match": "src=1004,dst=200",
         "action": "add(IDPS-R17),send()"
     },
-    "R19_R19": {
+    "R20_R19": {
         "active": "true,true",
-        "prio": 1000,
-        "match": "src=100,dst=1003",
+        "prio": 40,
+        "match": "dst=1004,port=2222",
+        "action": "add(IDPS-R18),send()"
+    },
+    "R20_R20": {
+        "active": "true,true",
+        "prio": 1,
+        "match": "*",
         "action": "send()"
     }
 }

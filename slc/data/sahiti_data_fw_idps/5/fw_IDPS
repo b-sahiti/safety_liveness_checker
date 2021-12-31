@@ -13,7 +13,7 @@
     },
     "R0_R4": {
         "active": "true,true",
-        "prio": 1000,
+        "prio": 100,
         "match": "src=1000,dst=100",
         "action": "delete(fw-R0),delete(fw-R1),delete(fw-R3),send()"
     },
@@ -25,38 +25,68 @@
     },
     "R2_R0": {
         "active": "true,false",
-        "prio": 10000,
+        "prio": 5000,
         "match": "src=1000,dst=100",
         "action": "drop()"
     },
     "R2_R1": {
         "active": "true,false",
-        "prio": 5000,
+        "prio": 2500,
         "match": "src=1000,dst=100",
         "action": "add(IDPS-R0),drop()"
     },
     "R2_R4": {
         "active": "true,true",
-        "prio": 1000,
+        "prio": 50,
         "match": "src=1000,dst=100",
         "action": "send()"
     },
     "R3": {
         "active": "true",
-        "prio": 100,
+        "prio": 50,
         "match": "src=100,dst=1000",
         "action": "drop()"
     },
     "R4_R3": {
         "active": "true,true",
-        "prio": 4000,
+        "prio": 2000,
         "match": "src=100,dst=1000,port=2222",
         "action": "add(IDPS-R2),send()"
     },
     "R4_R4": {
         "active": "true,true",
-        "prio": 1000,
+        "prio": 50,
         "match": "src=100,dst=1000",
+        "action": "send()"
+    },
+    "R5_R0": {
+        "active": "true,false",
+        "prio": 100,
+        "match": "src=1000",
+        "action": "drop()"
+    },
+    "R5_R1": {
+        "active": "true,false",
+        "prio": 50,
+        "match": "src=1000,dst=100",
+        "action": "add(IDPS-R0),drop()"
+    },
+    "R5_R2": {
+        "active": "true,false",
+        "prio": 50,
+        "match": "src=1000,dst=200",
+        "action": "add(IDPS-R1),send()"
+    },
+    "R5_R3": {
+        "active": "true,true",
+        "prio": 40,
+        "match": "dst=1000,port=2222",
+        "action": "add(IDPS-R2),send()"
+    },
+    "R5_R4": {
+        "active": "true,true",
+        "prio": 1,
+        "match": "*",
         "action": "send()"
     }
 }
