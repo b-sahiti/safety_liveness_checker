@@ -77,6 +77,9 @@ Step - 1 : Both NuSMV and SPIN will need take property of text format (e.g., src
 
             E.g., python -m slc --ind_prop=1 --input_file slc/data/sahiti_data_fw_idps/fw5.txt --property="src=1000;send()"
 
+        For Compound Tables:
+            E.g., python -m slc --compound_prop=1 --input_file slc/data/sahiti_data_fw_idps/5/fw_IDPS --property="src=1000;send()"
+
 
 
 Step - 2: Then the rule need to be in standard LTL format

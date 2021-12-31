@@ -35,10 +35,9 @@ if __name__ == "__main__":
         t = InputParser(args.input_file)
         print(indTables(t,args.property))
     if(args.compound_prop):
-        print(compoundTableConverter('slc/data/fw_IDPS',"src=I;drop"))
+        print(compoundTableConverter(args.input_file,args.property))
     if(args.ind_smv):
         if (args.input_file):
             print(args.output_smv_file)
-            #read_individual_table('slc/data/sahiti_data_fw_idps/fw5.txt')
             read_individual_table(args.input_file,args.output_smv_file)
     
