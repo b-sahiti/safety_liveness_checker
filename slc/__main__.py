@@ -3,17 +3,20 @@ from slc.src.utility import InputParser
 from slc.src.combine_tables import combTables
 import time
 from slc.src.property_generator import *
-from slc.src.individual_smv import read_individual_table
+from slc.src.individual_smv import build_individual_table_smv
+from slc.src.individual_promela import build_individual_table_prom
 
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--combine', action='store', type=int,default=0)
 parser.add_argument('--compound_prop', action='store', type=int,default=0)
 parser.add_argument('--ind_smv', action='store', type=int,default=0)
+parser.add_argument('--ind_prom', action='store', type=int,default=0)
 parser.add_argument('--ind_prop', action='store', type=int,default=0)
 parser.add_argument('--input_file', dest="input_file")
 parser.add_argument('--property', dest="property")
 parser.add_argument('--output_smv_file', dest="output_smv_file")
+parser.add_argument('--output_prom_file', dest="output_prom_file")
 
 args=parser.parse_args()
 
@@ -39,5 +42,8 @@ if __name__ == "__main__":
     if(args.ind_smv):
         if (args.input_file):
             print(args.output_smv_file)
-            read_individual_table(args.input_file,args.output_smv_file)
+            build_individual_table_smv(args.input_file,args.output_smv_file)
+    if(args.ind_prom):
+        if (args.input_file):
+            build_individual_table_prom(args.input_file,args.output_prom_file)
     

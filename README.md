@@ -51,8 +51,13 @@ Verify with Model Checkers (NuSMV and SPIN)
 
 
 3.2 For SPIN
+            From top level directory.
+            
+            python -m slc --ind_prom=1 --input_file <absolute path from slc folder>  --output_prom_file  <absolute path from slc folder>
 
-    Work in progress (Manually done, writing auto-generator)
+            E.g. : python -m slc --ind_prom=1 --input_file slc/data/sahiti_data_fw_idps/fw5.txt --output_prom_file slc/data/prom_files/fw5.smv
+
+
 
 4. Generate combined NF State Machines
 

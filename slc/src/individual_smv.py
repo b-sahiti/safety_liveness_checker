@@ -1,7 +1,7 @@
 import os
 from slc.src.utility import InputParser
 
-def read_individual_table(input,output_file):
+def build_individual_table_smv(input,output_file):
     table=InputParser(input)
     output=""
     main_modules={}
