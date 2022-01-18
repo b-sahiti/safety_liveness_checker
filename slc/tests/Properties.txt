@@ -77,6 +77,10 @@ Table 3:
 Component                           Property
 Counter        -------------------- Counter counts all IPs   
 
+Load Balancer:    ---------------  The traffic is sent to either s1 or S2 G( (src=*; send(s1)) xor  (src=*; send(s2))) 
+                                   All packets from same flow are sent to same server
+        Hash based
+        Stateful
 Port knocking  -------------------- Only desired closed port
                                     Path only after knocking on closed port (src=x & dst_port=p)-> X(scr=x & dst=p2;send() & (dst=x&src_[port=p2;send())])
 Firewalls
@@ -108,10 +112,6 @@ Application Chaining:
                                        |__ Fw2 - S2
                                         |__ FW3 - S3
 
-Load Balancer:    ---------------  The traffic is sent to either s1 or S2 G( (src=*; send(s1)) xor  (src=*; send(s2))) 
-                                   All packets from same flow are sent to same server
-        Hash based
-        Stateful
 
 
 Lower Level1:
