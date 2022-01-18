@@ -75,7 +75,8 @@ Table 2:
 Table 3:
 
 Component                           Property
-Counter        -------------------- Counter counts all IPs         
+Counter        -------------------- Counter counts all IPs   
+
 Port knocking  -------------------- Only desired closed port
                                     Path only after knocking on closed port (src=x & dst_port=p)-> X(scr=x & dst=p2;send() & (dst=x&src_[port=p2;send())])
 Firewalls
@@ -113,12 +114,16 @@ Load Balancer:    ---------------  The traffic is sent to either s1 or S2 G( (sr
         Stateful
 
 
-Lower Level:
+Lower Level1:
 Does FW/IDPS send all traffic to IDPS/LB only?  G(src=* ; send (IDPS) or src=*; drop())
 On a particular table, are all ackets with some match sent on particular interface only?
 Which IPs are ever allowed through a NF Table
 Which ports are used by a Table?
 Do any headers get manipulated in the table?*****
+
+
+Lower Level2:
+Are the tables implemented correctly? -- Connect to other verifiers
 
 
 
