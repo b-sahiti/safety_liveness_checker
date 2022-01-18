@@ -39,13 +39,13 @@ Global non-reachability       There should never be a path                      
 Future Reachability           Path will exist in future                           F(src=I, dst=D; send())                                             BA                        SBA             LBA
 Conditional Reachability      An event will enable a path in future               src=I, dst=D, authentication;drop()  -> F( src=I, dst=D; send())     
                               Eg: After authentication user can reach file server
-Immediate reachability        An event will immediately enable a path             src=I, dst=D, authenticated  -> N( src=I, dst=D; drop())  
+Immediate reachability        An event will immediately enable a path             src=I, dst=D,counter>10;send()  -> N( src=I, dst=D; drop())  
                               Eg: A authenticated  source will 
                               immediately access file server 
 Immediate non-reachability    An event will change state immediately              src=I, dst=D, blacklisted  -> N( src=I, dst=D; drop())  
                               Eg: A black listed source will loose 
                               access to file server immediately
-Chain Events                  The system states will change in a specific pattern src=I, dst=D; send(S1) U src=I, dst=D; send(S2) U src=I, dst=D; send(S3) 
+Chain Events                  The system states will change in a specific pattern src=I, dst=D, rate(1);send() U src=I, dst=D,rate(2); send() U src=I, dst=D,rate(3); send() 
                               Eg1: Rate limiter will reduce speed                   
                               from S1 to S2 then to S3 and so on
                               Eg2: Source traffic will be dropped until it is 
@@ -56,7 +56,7 @@ Always in future / After      Once path is established, it will always exist    
                                
 
 
-
+port knocking: security paper
 
 Table 2:
     classes of properties: Eg: Say how each property can fall into each of the below categories G, F, X
@@ -69,6 +69,58 @@ Table 2:
     Response: G(p-> (q))
     Chain Precedence:  q1,q2,q3,...p1,p2,p3...
     Chain Response: p1,p2,p3...q1,q2,q3,...
+
+
+
+Table 3:
+
+Component                           Property
+Counter        -------------------- Counter counts all IPs         
+Port knocking  -------------------- Only desired closed port
+                                    Path only after knocking on closed port (src=x & dst_port=p)-> X(scr=x & dst=p2;send() & (dst=x&src_[port=p2;send())])
+Firewalls
+    src & dst  -------------------- G(src=I & dst=D;send()) or G(!(src=I & dst=D;send())) or G(src=I & dst=D;drop())
+    src & dst & header fields -----  same as above with additional match fields
+    stateful   --------------------  (src=I & dst=D;send() & src=D & dst=I;drop()) -> src=D & dst=I;send() [src=D traffic is blocked until I connects to D first]
+                                      src=D & dst=I;drop() U src=I & dst=D;send()  [src=D traffic is blocked until I connects to D first]
+IP rewrite     -------------------- Redirect only needed flows
+                                    Redirect to only specific IPs
+Rate limiter   -------------------  Rate limit as needed based on IP or other fields     G(src=x; send(I0)) 
+                                    Only two possible sending rates    G(src=x;send(I0) xor src=x;send(I1))
+                                    Rate limit based on counter/usage G((src=x & 0<count<y;send(I0)) & (src=x & y<count;send(I1))) 
+                                    Rate limit decrement rate, based on usage in a specific order (src=x;send(I0) U src=x; send(I1))
+
+Spam Detecter  ------------------  Spam gets detected 
+FTP monitor    ------------------  f(P -> !P U(S & !P))
+IDPS
+    Heavy Hitters --------------- F(G(src=*,c>L1);drop()) . or G(F(src=*,c>L1);drop()) 
+    SYN-Fin
+    flow detector
+    DNS amplification Mitigation
+    UDP flood 
+Application Chaining:
+    FW-IDPS-server    ----------- A certain user can reach server
+                                  An attacher (counter in IDPS > L1) will get blocked
+    FW-IDPS-LB-server
+    Can we check Equivalence???  eg: For src=I1 is FW1==FW2==FW3 *****
+                                Gateway -- FW1 - S1 
+                                       |__ Fw2 - S2
+                                        |__ FW3 - S3
+
+Load Balancer:    ---------------  The traffic is sent to either s1 or S2 G( (src=*; send(s1)) xor  (src=*; send(s2))) 
+                                   All packets from same flow are sent to same server
+        Hash based
+        Stateful
+
+
+Lower Level:
+Does FW/IDPS send all traffic to IDPS/LB only?  G(src=* ; send (IDPS) or src=*; drop())
+On a particular table, are all ackets with some match sent on particular interface only?
+Which IPs are ever allowed through a NF Table
+Which ports are used by a Table?
+Do any headers get manipulated in the table?*****
+
+
 
 
 
